@@ -200,7 +200,7 @@ def static_analyzer(request, checksum, api=False):
                     app_dic['app_dir'],
                     True,
                 )
-                # Set Manifest link
+                # 设置 Manifest 连接
                 man_data_dic = manifest_data(app_dic['parsed_xml'], ns)
 
                 app_name = app_dic['real_name']
@@ -215,8 +215,10 @@ def static_analyzer(request, checksum, api=False):
                     msg = f'Performing Static Analysis on: {subject}'
                     logger.info(msg)
 
+                # get_app_details 获取 APP 详细数据
                 app_dic['playstore'] = get_app_details(
                     man_data_dic['packagename'])
+                # manifest_analysis 是对 AndroidManifest.xml 文件的处理
                 man_an_dic = manifest_analysis(
                     app_dic['parsed_xml'],
                     ns,
@@ -233,25 +235,29 @@ def static_analyzer(request, checksum, api=False):
                 # apktool should run before this
                 get_icon_apk(apk, app_dic)
 
+                # elf_analysis 是二进制分析
                 elf_dict = library_analysis(
                     app_dic['app_dir'],
                     app_dic['md5'],
                     'elf')
+                # cert_info是对证书的分析
                 cert_dic = cert_info(
                     apk,
                     app_dic,
                     man_data_dic)
+                # apkid_analysis 是对 apkid 的分析
                 apkid_results = apkid.apkid_analysis(app_dic[
                     'app_dir'], app_dic['app_path'], app_dic['app_name'])
+                # Trackers 追踪检测
                 tracker = Trackers.Trackers(
                     app_dic['app_dir'], app_dic['tools_dir'])
                 tracker_res = tracker.get_trackers()
-
+                # apk_2_java 反编译为 Java 代码
                 apk_2_java(app_dic['app_path'], app_dic['app_dir'],
                            app_dic['tools_dir'])
-
+                # dex_2_smali 反编译为 smali 代码
                 dex_2_smali(app_dic['app_dir'], app_dic['tools_dir'])
-
+                # code_analysis 代码分析
                 code_an_dic = code_analysis(
                     app_dic['app_dir'],
                     'apk',

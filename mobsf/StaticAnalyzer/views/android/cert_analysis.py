@@ -1,5 +1,5 @@
 # -*- coding: utf_8 -*-
-"""Module holding the functions for code analysis."""
+"""Module holding the functions for cert analysis."""
 
 import hashlib
 import logging

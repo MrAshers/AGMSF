@@ -246,6 +246,7 @@ def get_avg_cvss(findings):
             if find['cvss'] != 0:
                 cvss_scores.append(find['cvss'])
     if cvss_scores:
+        # 四舍五入
         avg_cvss = round(sum(cvss_scores) / len(cvss_scores), 1)
     if not getattr(settings, 'CVSS_SCORE_ENABLED', False):
         avg_cvss = None

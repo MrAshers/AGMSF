@@ -344,7 +344,7 @@
                     </table>
       {% endif %}
       {% if browsable_activities %}
-      <h2><i class="fas fa-clone"></i> BROWSABLE ACTIVITIES</h2>
+      <h2><i class="fas fa-clone"></i> 可浏览的 ACTIVITIES</h2>
        <table class="basic">
                                         <thead>
                                             <tr>
@@ -758,7 +758,7 @@
      </thead>
      <tbody>
       <tr>
-        <td>恶意权限</td>
+        <td>顶级恶意权限</td>
         <td>{{ malware_permissions.top_malware_permissions | length}}</b>/{{malware_permissions.total_malware_permissions}}</td>
         <td>
           {{ malware_permissions.top_malware_permissions | join:", "}}
@@ -775,7 +775,7 @@
 </table>
     <hr>
     <p>
-      <h3>恶意权限:</h3> 已知恶意软件广泛滥用的顶级权限。
+      <h3>顶级恶意权限:</h3> 已知恶意软件广泛滥用的顶级权限。
       <br/>
       <h3>其他常见权限:</h3> 已知恶意软件通常滥用的权限。
     </p>
