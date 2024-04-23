@@ -169,7 +169,7 @@ def api_docs(request):
 def about(request):
     """About Route."""
     context = {
-        'title': 'About',
+        'title': '关于',
         'version': settings.MOBSF_VER,
     }
     template = 'general/about.html'
@@ -242,7 +242,7 @@ def recent_scans(request):
         entry['DYNAMIC_REPORT_EXISTS'] = report_file.exists()
         entries.append(entry)
     context = {
-        'title': 'Recent Scans',
+        'title': '分析记录',
         'entries': entries,
         'version': settings.MOBSF_VER,
     }
