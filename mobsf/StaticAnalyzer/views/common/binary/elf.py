@@ -68,7 +68,7 @@ class ELFChecksec:
             severity = HIGH
             desc = (
                 '该二进制文件没有添加到堆栈中的栈溢出保护。'
-                '堆栈金丝雀用于检测和防止覆盖返回地址的漏洞。'
+                '栈溢出保护用于检测和防止覆盖返回地址的漏洞。'
                 '使用选项 -fstack-protector-all 启用栈溢出保护。'
                 '不适用于 Dart/Flutter 库，除非使用 Dart FFI。')
         elf_dict['stack_canary'] = {
