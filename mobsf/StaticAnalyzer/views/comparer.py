@@ -108,7 +108,7 @@ def generic_compare(request,
     # that is done on the classic ones
     # it will be filled during the different diff analysis
     context = {
-        'title': 'Compare report',
+        'title': '比较报告',
         'version': settings.MOBSF_VER,
         'first_app': {},
         'second_app': {},
