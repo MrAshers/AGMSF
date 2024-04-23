@@ -43,17 +43,15 @@ class ELFChecksec:
         if is_nx:
             severity = INFO
             desc = (
-                'The binary has NX bit set. This marks a '
-                'memory page non-executable making attacker '
-                'injected shellcode non-executable.')
+                '二进制文件设置了 NX 位。'
+                '这标志着内存页不可执行，'
+                '使得攻击者注入的 shellcode 不可执行。')
         else:
             severity = HIGH
             desc = (
-                'The binary does not have NX bit set. NX bit '
-                'offer protection against exploitation of memory corruption '
-                'vulnerabilities by marking memory page as non-executable. '
-                'Use option --noexecstack or -z noexecstack to mark stack as '
-                'non executable.')
+                '该二进制文件没有设置 NX 位。'
+                'NX 位通过将内存页面标记为不可执行来提供针对内存损坏漏洞的利用的保护。'
+                '使用选项 --noexecstack 或 -z noexecstack 将堆栈标记为不可执行。')
         elf_dict['nx'] = {
             'is_nx': is_nx,
             'severity': severity,
@@ -63,21 +61,16 @@ class ELFChecksec:
         if has_canary:
             severity = INFO
             desc = (
-                'This binary has a stack canary value '
-                'added to the stack so that it will be overwritten by '
-                'a stack buffer that overflows the return address. '
-                'This allows detection of overflows by verifying the '
-                'integrity of the canary before function return.')
+                '该二进制文件在堆栈中添加了一个栈溢出保护，'
+                '以便它会被溢出返回地址的堆栈缓冲区覆盖。'
+                '这允许通过在函数返回之前验证栈溢出保护的完整性来检测溢出。')
         else:
             severity = HIGH
             desc = (
-                'This binary does not have a stack '
-                'canary value added to the stack. Stack canaries '
-                'are used to detect and prevent exploits from '
-                'overwriting return address. Use the option '
-                '-fstack-protector-all to enable stack canaries. '
-                'Not applicable for Dart/Flutter libraries unless '
-                'Dart FFI is used.')
+                '该二进制文件没有添加到堆栈中的栈溢出保护。'
+                '堆栈金丝雀用于检测和防止覆盖返回地址的漏洞。'
+                '使用选项 -fstack-protector-all 启用栈溢出保护。'
+                '不适用于 Dart/Flutter 库，除非使用 Dart FFI。')
         elf_dict['stack_canary'] = {
             'has_canary': has_canary,
             'severity': severity,
@@ -86,36 +79,29 @@ class ELFChecksec:
         relro = self.relro()
         if relro == NA:
             severity = INFO
-            desc = ('RELRO checks are not applicable for '
-                    'Flutter/Dart binaries')
+            desc = ('RELRO 检查不适用于 Flutter/Dart 二进制文件')
         elif relro == FULL_RELRO:
             severity = INFO
             desc = (
-                'This shared object has full RELRO '
-                'enabled. RELRO ensures that the GOT cannot be '
-                'overwritten in vulnerable ELF binaries. '
-                'In Full RELRO, the entire GOT (.got and '
-                '.got.plt both) is marked as read-only.')
+                '此共享对象已完全启用 RELRO。'
+                'RELRO 确保 GOT 不会在易受攻击的 ELF 二进制文件中被覆盖。'
+                '在完整 RELRO 中，整个 GOT(.got 和 .got.plt )被标记为只读。')
         elif relro == PARTIAL_RELRO:
             severity = WARNING
             desc = (
-                'This shared object has partial RELRO '
-                'enabled. RELRO ensures that the GOT cannot be '
-                'overwritten in vulnerable ELF binaries. '
-                'In partial RELRO, the non-PLT part of the GOT '
-                'section is read only but .got.plt is still '
-                'writeable. Use the option -z,relro,-z,now to '
-                'enable full RELRO.')
+                '此共享对象启用了部分 RELRO。'
+                'RELRO 确保 GOT 不会在易受攻击的 ELF 二进制文件中被覆盖。'
+                '在部分 RELRO 中，GOT 部分的非 PLT 部分是只读的，'
+                '但 .got.plt 仍然是可写的。'
+                '使用选项 -z,relro,-z,now 启用完整的 RELRO。')
         else:
             severity = HIGH
             desc = (
-                'This shared object does not have RELRO '
-                'enabled. The entire GOT (.got and '
-                '.got.plt both) are writable. Without this compiler '
-                'flag, buffer overflows on a global variable can '
-                'overwrite GOT entries. Use the option '
-                '-z,relro,-z,now to enable full RELRO and only '
-                '-z,relro to enable partial RELRO.')
+                '此共享对象未启用 RELRO。'
+                '整个 GOT（.got 和 .got.plt）都是可写的。'
+                '如果没有此编译器标志，全局变量上的缓冲区溢出可能会覆盖 GOT 条目。'
+                '使用选项 -z,relro,-z,now 启用完整 RELRO，'
+                '仅使用 -z,relro 启用部分 RELRO。')
         elf_dict['relocation_readonly'] = {
             'relro': relro,
             'severity': severity,
@@ -125,19 +111,15 @@ class ELFChecksec:
         if rpath:
             severity = HIGH
             desc = (
-                'The binary has RPATH set. In certain cases, '
-                'an attacker can abuse this feature to run arbitrary '
-                'libraries for code execution and privilege '
-                'escalation. The only time a library should '
-                'set RPATH is when it is linked to private '
-                'libraries in the same package. Remove the '
-                'compiler option -rpath to remove RPATH.')
+                '二进制文件已设置 RPATH。'
+                '在某些情况下，攻击者可以滥用此功能来运行任意库以执行代码和权限升级。'
+                '库应该设置 RPATH 的唯一时间是当它链接到同一包中的私有库时。'
+                '删除编译器选项 -rpath 以删除 RPATH。')
             rpt = rpath.rpath
         else:
             severity = INFO
             desc = (
-                'The binary does not have run-time search path '
-                'or RPATH set.')
+                '该二进制文件没有运行时搜索路径或 RPATH 设置。')
             rpt = rpath
         elf_dict['rpath'] = {
             'rpath': rpt,
@@ -148,19 +130,15 @@ class ELFChecksec:
         if runpath:
             severity = HIGH
             desc = (
-                'The binary has RUNPATH set. In certain cases, '
-                'an attacker can abuse this feature and or modify '
-                'environment variables to run arbitrary '
-                'libraries for code execution and privilege '
-                'escalation. The only time a library should '
-                'set RUNPATH is when it is linked to private '
-                'libraries in the same package. Remove the compiler '
-                'option --enable-new-dtags,-rpath to remove RUNPATH.')
+                '二进制文件已设置 RUNPATH。'
+                '在某些情况下，攻击者可以滥用此功能和/或修改环境变量来运行任意库以执行代码和权限升级。'
+                '库应该设置 RUNPATH 的唯一时间是当它链接到同一包中的私有库时。'
+                '删除编译器选项 --enable-new-dtags,-rpath 以删除 RUNPATH。')
             rnp = runpath.runpath
         else:
             severity = INFO
             desc = (
-                'The binary does not have RUNPATH set.')
+                '该二进制文件没有设置 RUNPATH。')
             rnp = runpath
         elf_dict['runpath'] = {
             'runpath': rnp,
@@ -170,21 +148,17 @@ class ELFChecksec:
         fortified_functions = self.fortify()
         if fortified_functions:
             severity = INFO
-            desc = ('The binary has the '
-                    f'following fortified functions: {fortified_functions}')
+            desc = ('该二进制文件具有'
+                    f'以下强化功能: {fortified_functions}')
         else:
             if self.is_dart():
                 severity = INFO
             else:
                 severity = WARNING
-            desc = ('The binary does not have any '
-                    'fortified functions. Fortified functions '
-                    'provides buffer overflow checks against '
-                    'glibc\'s commons insecure functions like '
-                    'strcpy, gets etc. Use the compiler option '
-                    '-D_FORTIFY_SOURCE=2 to fortify functions. '
-                    'This check is not applicable for '
-                    'Dart/Flutter libraries.')
+            desc = ('该二进制文件没有任何强化功能。'
+                    '强化函数针对 glibc 的公共不安全函数（如 strcpy、gets 等）提供缓冲区溢出检查。'
+                    '使用编译器选项 -D_FORTIFY_SOURCE=2 来强化函数。'
+                    '此检查不适用于 Dart/Flutter 库。')
         elf_dict['fortify'] = {
             'is_fortified': bool(fortified_functions),
             'severity': severity,
@@ -193,10 +167,10 @@ class ELFChecksec:
         is_stripped = self.is_symbols_stripped()
         if is_stripped:
             severity = INFO
-            desc = 'Symbols are stripped.'
+            desc = '符号被剥离。'
         else:
             severity = WARNING
-            desc = 'Symbols are available.'
+            desc = '符号可用。'
         elf_dict['symbol'] = {
             'is_stripped': is_stripped,
             'severity': severity,

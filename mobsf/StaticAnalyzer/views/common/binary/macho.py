@@ -49,19 +49,16 @@ class MachOChecksec:
         if has_nx:
             severity = 'info'
             desc = (
-                'The binary has NX bit set. This marks a '
-                'memory page non-executable making attacker '
-                'injected shellcode non-executable.')
+                '二进制文件设置了 NX 位。'
+                '这标志着内存页面不可执行，'
+                '使得攻击者注入的 shellcode 不可执行。')
         else:
             severity = 'info'
             desc = (
-                'The binary does not have NX bit set. NX bit '
-                'offer protection against exploitation of memory corruption '
-                'vulnerabilities by marking memory page as non-executable. '
-                'However iOS never allows an app to execute from writeable '
-                'memory. You do not need to specifically enable the '
-                '‘NX bit’ because it’s always enabled for all '
-                'third-party code.')
+                '该二进制文件没有设置 NX 位。'
+                'NX 位通过将内存页面标记为不可执行来提供针对内存损坏漏洞的利用的保护。'
+                '然而，iOS 从来不允许应用程序从可写内存中执行。'
+                '您不需要专门启用“NX 位”，因为它始终对所有第三方代码启用。')
         macho_dict['nx'] = {
             'has_nx': has_nx,
             'severity': severity,
@@ -70,10 +67,9 @@ class MachOChecksec:
         if has_pie:
             severity = 'info'
             desc = (
-                'The binary is build with -fPIC flag which '
-                'enables Position independent code. This makes Return '
-                'Oriented Programming (ROP) attacks much more difficult '
-                'to execute reliably.')
+                '该二进制文件是使用 -fPIC 标志构建的，'
+                '该标志启用位置独立代码。'
+                '这使得面向返回编程（ROP）攻击更难以可靠地执行。')
         else:
             severity = 'high'
             ext = Path(self.macho_name).suffix
@@ -84,16 +80,11 @@ class MachOChecksec:
                     or (not ext and '.framework' in self.macho_name)):
                 severity = 'info'
             desc = (
-                'The binary is built without Position '
-                'Independent Code flag. In order to prevent '
-                'an attacker from reliably jumping to, for example, a '
-                'particular exploited function in memory, Address '
-                'space layout randomization (ASLR) randomly arranges '
-                'the address space positions of key data areas of a '
-                'process, including the base of the executable and the '
-                'positions of the stack,heap and libraries. Use compiler '
-                'option -fPIC to enable Position Independent Code. '
-                'Not applicable for dylibs and static libraries.')
+                '该二进制文件是在没有位置独立代码标志的情况下构建的。'
+                '例如，为了防止攻击者可靠地跳转到内存中的特定被利用函数，'
+                '地址空间布局随机化 (ASLR) 随机排列进程关键数据区域的地址空间位置，'
+                '包括可执行文件的基址和栈、堆和库的位置。'
+                '使用编译器选项 -fPIC 启用位置无关代码。不适用于 dylib 和静态库。')
         macho_dict['pie'] = {
             'has_pie': has_pie,
             'severity': severity,
@@ -102,28 +93,24 @@ class MachOChecksec:
         if has_canary:
             severity = 'info'
             desc = (
-                'This binary has a stack canary value '
-                'added to the stack so that it will be overwritten by '
-                'a stack buffer that overflows the return address. '
-                'This allows detection of overflows by verifying the '
-                'integrity of the canary before function return.')
+                '该二进制文件在堆栈中添加了一个栈溢出保护，'
+                '以便它会被溢出返回地址的堆栈缓冲区覆盖。'
+                '这允许通过验证来检测溢出函数返回之前栈溢出保护的完整性。')
         elif is_stripped:
             severity = 'warning'
             desc = (
-                'This binary has debug symbols stripped. We cannot identify '
-                'whether stack canary is enabled or not.')
+                '该二进制文件已删除调试符号。'
+                '我们无法确定栈溢出保护是否启用。')
         else:
             severity = 'high'
             sw_msg = ''
             if 'libswift' in self.macho_name:
                 severity = 'warning'
-                sw_msg = ' This might be okey for pure Swift dylibs.'
+                sw_msg = '这对于纯 Swift dylib 可能没问题。'
             desc = (
-                'This binary does not have a stack '
-                'canary value added to the stack. Stack canaries '
-                'are used to detect and prevent exploits from '
-                'overwriting return address. Use the option '
-                f'-fstack-protector-all to enable stack canaries.{sw_msg}')
+                '该二进制文件没有添加到堆栈中的栈溢出保护。'
+                '栈溢出保护用于检测和防止覆盖返回地址的漏洞。使用选项 '
+                f'-fstack-protector-all 启用栈溢出保护。{sw_msg}')
         macho_dict['stack_canary'] = {
             'has_canary': has_canary,
             'severity': severity,
@@ -132,30 +119,24 @@ class MachOChecksec:
         if has_arc:
             severity = 'info'
             desc = (
-                'The binary is compiled with Automatic Reference '
-                'Counting (ARC) flag. ARC is a compiler '
-                'feature that provides automatic memory '
-                'management of Objective-C objects and is an '
-                'exploit mitigation mechanism against memory '
-                'corruption vulnerabilities.'
+                '该二进制文件是使用自动引用计数 (ARC) 标志进行编译的。'
+                ' ARC 是一项编译器功能，'
+                '可提供 Objective-C 对象的自动内存管理，'
+                '并且是针对内存损坏漏洞的利用缓解机制。'
             )
         elif is_stripped:
             severity = 'warning'
             desc = (
-                'This binary has debug symbols stripped. We cannot identify '
-                'whether ARC is enabled or not.')
+                '该二进制文件已删除调试符号。'
+                '我们无法确定 ARC 是否启用。')
         else:
             severity = 'high'
             desc = (
-                'The binary is not compiled with Automatic '
-                'Reference Counting (ARC) flag. ARC is a compiler '
-                'feature that provides automatic memory '
-                'management of Objective-C objects and '
-                'protects from memory corruption '
-                'vulnerabilities. Use compiler option '
-                '-fobjc-arc to enable ARC or set '
-                'Objective-C Automatic Reference Counting '
-                'to YES in project configuration.')
+                '该二进制文件未使用自动引用计数 (ARC) 标志进行编译。 '
+                'ARC 是一项编译器功能，'
+                '可提供 Objective-C 对象的自动内存管理并防止内存损坏漏洞。'
+                '使用编译器选项 -fobjc-arc 启用 ARC 或'
+                '在项目配置中将 Objective-C 自动引用计数设置为 YES。')
         macho_dict['arc'] = {
             'has_arc': has_arc,
             'severity': severity,
@@ -164,16 +145,14 @@ class MachOChecksec:
         if has_rpath:
             severity = 'warning'
             desc = (
-                'The binary has Runpath Search Path (@rpath) set. '
-                'In certain cases an attacker can abuse this '
-                'feature to run arbitrary executable for code '
-                'execution and privilege escalation. Remove the '
-                'compiler option -rpath to remove @rpath.')
+                '该二进制文件设置了运行路径搜索路径 (@rpath)。'
+                '在某些情况下，'
+                '攻击者可以滥用此功能来运行任意可执行文件以执行代码和权限升级。'
+                '删除编译器选项 -rpath 以删除 @rpath。')
         else:
             severity = 'info'
             desc = (
-                'The binary does not have Runpath Search '
-                'Path (@rpath) set.')
+                '该二进制文件没有设置运行路径搜索路径 (@rpath)。')
         macho_dict['rpath'] = {
             'has_rpath': has_rpath,
             'severity': severity,
@@ -181,10 +160,10 @@ class MachOChecksec:
         }
         if has_code_signature:
             severity = 'info'
-            desc = 'This binary has a code signature.'
+            desc = '该二进制文件没有代码签名。'
         else:
             severity = 'warning'
-            desc = 'This binary does not have a code signature.'
+            desc = '该二进制文件没有代码签名。'
         macho_dict['code_signature'] = {
             'has_code_signature': has_code_signature,
             'severity': severity,
@@ -192,10 +171,10 @@ class MachOChecksec:
         }
         if is_encrypted:
             severity = 'info'
-            desc = 'This binary is encrypted.'
+            desc = '该二进制文件已加密。'
         else:
             severity = 'warning'
-            desc = 'This binary is not encrypted.'
+            desc = '该二进制文件未加密。'
         macho_dict['encrypted'] = {
             'is_encrypted': is_encrypted,
             'severity': severity,
@@ -203,16 +182,14 @@ class MachOChecksec:
         }
         if is_stripped:
             severity = 'info'
-            desc = 'Debug Symbols are stripped'
+            desc = '调试符号被剥离'
         else:
             severity = 'warning'
             desc = (
-                'Debug Symbols are available. To strip '
-                'debugging symbols, set Strip Debug '
-                'Symbols During Copy to YES, '
-                'Deployment Postprocessing to YES, '
-                'and Strip Linked Product to YES in '
-                'project\'s build settings.')
+                '调试符号可用。要去除调试符号，'
+                '请在项目的构建设置中将“Strip Debug Symbols During Copy”设置为“YES”，'
+                '将“Deployment Postprocessing”设置为“YES”，'
+                '并将“Strip Linked Product to in project\'s build setting”设置为“YES”。')
         macho_dict['symbol'] = {
             'is_stripped': is_stripped,
             'severity': severity,

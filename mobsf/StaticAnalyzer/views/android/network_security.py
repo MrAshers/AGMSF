@@ -72,8 +72,7 @@ def analysis(app_dir, config, is_debuggable, src_type):
                 finds.append({
                     'scope': ['*'],
                     'description': (
-                        'Base config is insecurely configured'
-                        ' to permit clear text traffic to all domains.'),
+                        '基本配置不安全地配置为允许到所有域的明文流量。'),
                     'severity': HIGH,
                 })
                 summary[HIGH] += 1
@@ -81,8 +80,7 @@ def analysis(app_dir, config, is_debuggable, src_type):
                 finds.append({
                     'scope': ['*'],
                     'description': (
-                        'Base config is configured to disallow '
-                        'clear text traffic to all domains.'),
+                        '基本配置配置为禁止到所有域的明文流量。'),
                     'severity': SECURE,
                 })
                 summary[SECURE] += 1
@@ -96,8 +94,8 @@ def analysis(app_dir, config, is_debuggable, src_type):
                         finds.append({
                             'scope': ['*'],
                             'description': (
-                                'Base config is configured to trust'
-                                f'bundled certs {loc}.'),
+                                '基本配置配置为信任'
+                                f'捆绑证书 {loc}。'),
                             'severity': INFO,
                         })
                         summary[INFO] += 1
@@ -105,8 +103,8 @@ def analysis(app_dir, config, is_debuggable, src_type):
                         finds.append({
                             'scope': ['*'],
                             'description': (
-                                'Base config is configured to trust'
-                                ' system certificates.'),
+                                '基本配置配置为'
+                                '信任系统证书。'),
                             'severity': WARNING,
                         })
                         summary[WARNING] += 1
@@ -114,8 +112,8 @@ def analysis(app_dir, config, is_debuggable, src_type):
                         finds.append({
                             'scope': ['*'],
                             'description': (
-                                'Base config is configured to trust'
-                                ' user installed certificates.'),
+                                '基本配置配置为'
+                                '信任用户安装的证书。'),
                             'severity': HIGH,
                         })
                         summary[HIGH] += 1
@@ -123,8 +121,8 @@ def analysis(app_dir, config, is_debuggable, src_type):
                         finds.append({
                             'scope': ['*'],
                             'description': (
-                                'Base config is configured to '
-                                'bypass certificate pinning.'),
+                                '基本配置配置为'
+                                '绕过证书固定。'),
                             'severity': HIGH,
                         })
                         summary[HIGH] += 1
@@ -140,9 +138,9 @@ def analysis(app_dir, config, is_debuggable, src_type):
                 finds.append({
                     'scope': domain_list,
                     'description': (
-                        'Domain config is insecurely configured'
-                        ' to permit clear text traffic to these '
-                        'domains in scope.'),
+                        '域配置不安全地配置为'
+                        '允许明文流量到达'
+                        '范围内的这些域。'),
                     'severity': HIGH,
                 })
                 summary[HIGH] += 1
@@ -150,9 +148,9 @@ def analysis(app_dir, config, is_debuggable, src_type):
                 finds.append({
                     'scope': domain_list,
                     'description': (
-                        'Domain config is securely configured'
-                        ' to disallow clear text traffic to these '
-                        'domains in scope.'),
+                        '域配置已安全配置为'
+                        '禁止明文流量流向'
+                        '范围内的这些域。'),
                     'severity': SECURE,
                 })
                 summary[SECURE] += 1
@@ -166,8 +164,8 @@ def analysis(app_dir, config, is_debuggable, src_type):
                         finds.append({
                             'scope': domain_list,
                             'description': (
-                                'Domain config is configured to trust '
-                                f'bundled certs {loc}.'),
+                                '域配置配置为信任'
+                                f'捆绑证书 {loc}。'),
                             'severity': INFO,
                         })
                         summary[INFO] += 1
@@ -175,8 +173,8 @@ def analysis(app_dir, config, is_debuggable, src_type):
                         finds.append({
                             'scope': domain_list,
                             'description': (
-                                'Domain config is configured to trust'
-                                ' system certificates.'),
+                                '域配置配置为'
+                                '信任系统证书。'),
                             'severity': WARNING,
                         })
                         summary[WARNING] += 1
@@ -184,8 +182,8 @@ def analysis(app_dir, config, is_debuggable, src_type):
                         finds.append({
                             'scope': domain_list,
                             'description': (
-                                'Domain config is configured to trust'
-                                ' user installed certificates.'),
+                                '域配置配置为'
+                                '信任用户安装的证书。'),
                             'severity': HIGH,
                         })
                         summary[HIGH] += 1
@@ -193,8 +191,8 @@ def analysis(app_dir, config, is_debuggable, src_type):
                         finds.append({
                             'scope': domain_list,
                             'description': (
-                                'Domain config is configured to '
-                                'bypass certificate pinning.'),
+                                '域配置配置为'
+                                '绕过证书固定。'),
                             'severity': HIGH,
                         })
                         summary[HIGH] += 1
@@ -216,9 +214,8 @@ def analysis(app_dir, config, is_debuggable, src_type):
                     finds.append({
                         'scope': domain_list,
                         'description': (
-                            'Certificate pinning expires '
-                            f'on {exp}. After this date '
-                            'pinning will be disabled. '
+                            '证书固定到期日期 '
+                            f' {exp}。在此日期之后，固定将被禁用。'
                             f'[{pins_list}]'),
                         'severity': INFO,
                     })
@@ -227,10 +224,8 @@ def analysis(app_dir, config, is_debuggable, src_type):
                     finds.append({
                         'scope': domain_list,
                         'description': (
-                            'Certificate pinning does '
-                            'not have an expiry. Ensure '
-                            'that pins are updated before '
-                            'certificate expire. '
+                            '证书固定没有有效期。'
+                            '确保在证书过期之前更新。 '
                             f'[{pins_list}]'),
                         'severity': SECURE,
                     })
@@ -243,9 +238,8 @@ def analysis(app_dir, config, is_debuggable, src_type):
                 finds.append({
                     'scope': ['*'],
                     'description': (
-                        'Debug override is configured to permit clear '
-                        'text traffic to all domains and the app '
-                        'is debuggable.'),
+                        '调试覆盖配置为允许到所有域的明文流量，'
+                        '并且应用程序是可调试的。'),
                     'severity': HIGH,
                 })
                 summary[HIGH] += 1
@@ -259,8 +253,8 @@ def analysis(app_dir, config, is_debuggable, src_type):
                         finds.append({
                             'scope': ['*'],
                             'description': (
-                                'Debug override is configured to trust '
-                                f'bundled debug certs {loc}.'),
+                                '调试覆盖配置为信任'
+                                f'捆绑的调试证书 {loc}。'),
                             'severity': HIGH,
                         })
                         summary[HIGH] += 1
@@ -268,8 +262,8 @@ def analysis(app_dir, config, is_debuggable, src_type):
                         finds.append({
                             'scope': ['*'],
                             'description': (
-                                'Debug override is configured to '
-                                'bypass certificate pinning.'),
+                                '调试覆盖配置为'
+                                '绕过证书固定。'),
                             'severity': HIGH,
                         })
                         summary[HIGH] += 1
