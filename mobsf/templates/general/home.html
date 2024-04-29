@@ -49,11 +49,11 @@
     </nav>
 
     <div class="site-wrapper">
-         <div class="site-wrapper-inner">
+        <div class="site-wrapper-inner">
             <div class="cover-container">
-               <div class="masthead clearfix">
-                  <div align="center" class="inner">
-                  </div>
+                <div class="masthead clearfix">
+                    <div align="center" class="inner">
+                    </div>
                </div>
                <div class="inner cover">
                   <div style="visibility:hidden; opacity:0" id="drop">
@@ -85,20 +85,20 @@
                   </div>
                </div>
             </div>
-         </div>
-      </div>
+        </div>
+    </div>
 
-      <div class="hidden loading">
+    <div class="hidden loading">
         <div class='uil-ring-css' style='transform:scale(0.79);'>
           <div></div>
         </div>
-        </div>
+    </div>
 
         <script src="{% static "adminlte/plugins/jquery.min.js" %}"></script>
         <script src="{% static "others/js/notify.min.js" %}"></script>
         <!-- Bootstrap 4 -->
         <script src="{% static "adminlte/plugins/bootstrap/bootstrap.bundle.min.js" %}"></script>
-      <script>
+        <script>
             let warning = "This is a demo MobSF instance. Anything uploaded here will be publicly available. Do you want to continue?";
             // Result View
             function load_result(url){
@@ -232,28 +232,28 @@
                 return false;
           }
          // File Upload
-         function uploadFile(file, i) {
-           try {
-                if (!isValidExt(file.name) || !isValidMime(file.type)){
-                    return;
+            function uploadFile (file, i) {
+                try {
+                    if ( !isValidExt (file.name) || !isValidMime (file.type) ) {
+                        return;
+                    }
+                    _ ("progressBar").style.visibility = "visible";
+                    var url = '/upload/'
+                    var xhr = new XMLHttpRequest ()
+                    xhr.open ('POST', url, true)
+                    xhr.setRequestHeader ('X-Requested-With', 'XMLHttpRequest')
+                    xhr.setRequestHeader ("X-CSRFToken", '{{ csrf_token }}');
+                    xhr.upload.addEventListener ("progress", progressHandler, false);
+                    xhr.addEventListener ("load", completeHandler, false);
+                    xhr.addEventListener ("error", errorHandler, false);
+                    xhr.addEventListener ("abort", abortHandler, false);
+                    var formdata = new FormData ();
+                    formdata.append ("file", file);
+                    xhr.send (formdata)
+                } catch (e) {
+                    alert ("Error:" + e);
                 }
-                _("progressBar").style.visibility = "visible";
-                var url = '/upload/'
-                var xhr = new XMLHttpRequest()
-                xhr.open('POST', url, true)
-                xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest')
-                xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
-                xhr.upload.addEventListener("progress", progressHandler, false);
-                xhr.addEventListener("load", completeHandler, false);
-                xhr.addEventListener("error", errorHandler, false);
-                xhr.addEventListener("abort", abortHandler, false);
-                var formdata = new FormData();
-                formdata.append("file", file);
-                xhr.send(formdata)
-            } catch (e) {
-                alert("Error:" + e);
             }
-           }
 
            function handleFiles(files) {
                files = [...files]
@@ -334,6 +334,6 @@
                     }
                 });
             });
-      </script>
+        </script>
    </body>
 </html>

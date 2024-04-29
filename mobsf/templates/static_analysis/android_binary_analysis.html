@@ -319,23 +319,22 @@
             </ul>
           </li>
           {% endif %}
-<!--            <li class="nav-item">-->
-<!--              <a href="{% url "pdf" checksum=md5 %}" class="nav-link">-->
-<!--              <i class="nav-icon fas fa-file-pdf"></i>-->
-<!--              <p>-->
-<!--                PDF 报告-->
-<!--              </p>-->
-<!--             </a>-->
-<!--            </li>-->
             <li class="nav-item">
-              <a href="javascript:window.print()" class="nav-link">
-              <i class="nav-icon fa fa-print"></i>
+              <a href="{% url "pdf" checksum=md5 %}" class="nav-link">
+              <i class="nav-icon fas fa-file-pdf"></i>
               <p>
-                打印报告
+                PDF 报告
               </p>
              </a>
             </li>
-
+<!--            <li class="nav-item">-->
+<!--              <a href="javascript:window.print()" class="nav-link">-->
+<!--              <i class="nav-icon fa fa-print"></i>-->
+<!--              <p>-->
+<!--                打印报告-->
+<!--              </p>-->
+<!--             </a>-->
+<!--            </li>-->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -1737,7 +1736,7 @@
                 </div>
                   <span class="product-description">
                       {{ malware_permissions.top_malware_permissions | join:", "}}
-                    </span>  
+                  </span>
                 </div>
               </div>
               <div class="col-sm">

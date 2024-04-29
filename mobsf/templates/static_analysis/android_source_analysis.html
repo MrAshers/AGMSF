@@ -244,22 +244,22 @@
               </li>
             </ul>
           </li>
-<!--            <li class="nav-item">-->
-<!--              <a href="{% url "pdf" checksum=md5 %}" class="nav-link">-->
-<!--              <i class="nav-icon fas fa-file-pdf"></i>-->
-<!--              <p>-->
-<!--                PDF 报告-->
-<!--              </p>-->
-<!--             </a>-->
-<!--            </li>-->
             <li class="nav-item">
-              <a href="javascript:window.print()" class="nav-link">
-              <i class="nav-icon fa fa-print"></i>
+              <a href="{% url "pdf" checksum=md5 %}" class="nav-link">
+              <i class="nav-icon fas fa-file-pdf"></i>
               <p>
-                打印报告
+                PDF 报告
               </p>
              </a>
             </li>
+<!--            <li class="nav-item">-->
+<!--              <a href="javascript:window.print()" class="nav-link">-->
+<!--              <i class="nav-icon fa fa-print"></i>-->
+<!--              <p>-->
+<!--                打印报告-->
+<!--              </p>-->
+<!--             </a>-->
+<!--            </li>-->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -1101,8 +1101,8 @@
                       </a>
                     
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{rule | escapejs }}', false, $(this.closest('tr')))">抑制 <b>{{package_name}}</b> 中的规则 <b>{{ rule }}</b> </a>
-                        <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{rule | escapejs }}', true, $(this.closest('tr')))">仅在这些文件中抑制 <b>{{package_name}}</b> 中的规则 <b>{{ rule }}</b> </a>
+                        <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{rule | escapejs }}', false, $(this.closest('tr')))">删除 <b>{{package_name}}</b> 中的规则 <b>{{ rule }}</b> </a>
+                        <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{rule | escapejs }}', true, $(this.closest('tr')))">仅在这些文件中删除 <b>{{package_name}}</b> 中的规则 <b>{{ rule }}</b> </a>
                       </div>
                     </div>
 
@@ -1224,55 +1224,53 @@
         <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
-            <p>
-             <strong><i class="fa fa-braille"></i> 滥用权限</strong>
-             </p>
+              <p>
+                  <strong><i class="fa fa-braille"></i> 滥用权限</strong>
+              </p>
               <div class="table-responsive">
-                
                 {% if malware_permissions %}
-              
                 <div class="container">
                   <div class="row">
                     <div class="col-sm">
-                <div class="progress-group">
-                  <strong>顶级滥用权限</strong>
-                  <span class="float-right"><b>{{ malware_permissions.top_malware_permissions | length}}</b>/{{malware_permissions.total_malware_permissions}}</span>
-                  <div class="progress progress-sm">
-                  <div class="progress-bar bg-danger" aria-valuemin="0" style="width: {% widthratio malware_permissions.top_malware_permissions|length malware_permissions.total_malware_permissions 100 %}%;" aria-valuenow="{{ malware_permissions.top_malware_permissions | length}}" aria-valuemax="{{malware_permissions.total_malware_permissions}}"></div>
-                </div>
-                  <span class="product-description">
-                      {{ malware_permissions.top_malware_permissions | join:", "}}
-                    </span>  
-                </div>
-              </div>
-              <div class="col-sm">
-                <div class="progress-group">
-                  <strong>其他常见权限</strong>
-                  <span class="float-right"><b>{{ malware_permissions.other_abused_permissions | length}}</b>/{{ malware_permissions.total_other_permissions}}</span>
-                  <div class="progress progress-sm">
-                  <div class="progress-bar bg-warning" aria-valuemin="0" style="width: {% widthratio malware_permissions.other_abused_permissions|length malware_permissions.total_other_permissions 100 %}%;" aria-valuenow="{{ malware_permissions.other_abused_permissions | length}}" aria-valuemax="{{ malware_permissions.total_other_permissions}}"></div>
-                </div>
-                <span class="product-description">
-                  {{ malware_permissions.other_abused_permissions | join:", "}}
-                  </span>
+                        <div class="progress-group">
+                            <strong>顶级滥用权限</strong>
+                            <span class="float-right"><b>{{ malware_permissions.top_malware_permissions | length}}</b>/{{malware_permissions.total_malware_permissions}}</span>
+                            <div class="progress progress-sm">
+                                <div class="progress-bar bg-danger" aria-valuemin="0" style="width: {% widthratio malware_permissions.top_malware_permissions|length malware_permissions.total_malware_permissions 100 %}%;" aria-valuenow="{{ malware_permissions.top_malware_permissions | length}}" aria-valuemax="{{malware_permissions.total_malware_permissions}}"></div>
+                            </div>
+                            <span class="product-description">
+                                {{ malware_permissions.top_malware_permissions | join:", "}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="progress-group">
+                            <strong>其他常见权限</strong>
+                            <span class="float-right"><b>{{ malware_permissions.other_abused_permissions | length}}</b>/{{ malware_permissions.total_other_permissions}}</span>
+                            <div class="progress progress-sm">
+                                <div class="progress-bar bg-warning" aria-valuemin="0" style="width: {% widthratio malware_permissions.other_abused_permissions|length malware_permissions.total_other_permissions 100 %}%;" aria-valuenow="{{ malware_permissions.other_abused_permissions | length}}" aria-valuemax="{{ malware_permissions.total_other_permissions}}"></div>
+                            </div>
+                            <span class="product-description">
+                                {{ malware_permissions.other_abused_permissions | join:", "}}
+                            </span>
+                        </div>
+                    </div>
                   </div>
-                  </div>
-                 </div>
                 </div>
                 <hr>
-                <p>
-                  <strong>顶级恶意权限</strong> 是已知恶意软件广泛滥用的顶级权限。
-                  <br/>
-                  <strong>其他常见权限</strong> 是已知恶意软件通常滥用的权限。
-                </p>
-                 {% endif %}
-            </div>
+                  <p>
+                      <strong>顶级恶意权限</strong> 是已知恶意软件广泛滥用的顶级权限。
+                      <br/>
+                      <strong>其他常见权限</strong> 是已知恶意软件通常滥用的权限。
+                  </p>
+                {% endif %}
+              </div>
           </div>
         </div><!-- /.card -->
         </div>
         <!-- end row -->
-        </div>
     </div>
+  </div>
 </section>
  <!-- ===========================end malware permissions  ================================== -->
  <style>

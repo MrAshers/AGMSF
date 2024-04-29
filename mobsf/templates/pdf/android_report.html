@@ -716,18 +716,17 @@
             </tbody>
                   </table>
     {% endif %}
-<!-- Added for anyone who needs QUARK Results in Report
-       {% if quark %} 
-      <h2><i class="fab fa-quora"></i> QUARK </h2>
+        {% if quark %}
+      <h2><i class="fab fa-quora"></i> QUARK 分析 </h2>
       <table class="basic">
                   <thead>
                   <tr>
-                      <th>POTENTIAL MALICIOUS BEHAVIOUR</th>
-                      <th>EVIDENCE</th>
+                      <th>潜在恶意行为</th>
+                      <th>证据</th>
                   </tr>
                  </thead>
                   <tbody>
-									 {% for item in quark %}
+                  {% for item in quark %}
                     <tr>
                        <td style="word-break:break-all;">
                        {{ item.crime }}
@@ -739,13 +738,12 @@
                             {% endfor %}
                        </td>
                     </tr>
-                  {% endfor %} 
-										</tbody>
-										</table>
+                  {% endfor %}
+                  </tbody>
+      </table>
         {% endif %}
--->
 
-    {% if malware_permissions %}
+        {% if malware_permissions %}
     <h2><i class="fa fa-braille"></i> 滥用权限</h2>
 
     <table id="table_ofac" class="table table-bordered table-hover table-striped">
