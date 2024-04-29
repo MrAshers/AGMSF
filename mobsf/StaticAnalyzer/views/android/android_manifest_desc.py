@@ -1,7 +1,7 @@
 MANIFEST_DESC = {
     'well_known_assetlinks': {
         'title': ('未找到 App Link assetlinks.json 文件'
-                  '<br>[android:name=%s]<br>[android:host=%s]'),
+                  '[android:name=%s] [android:host=%s]'),
         'level': 'high',
         'description': ('未找到 App Link 资产验证网址 (%s) 或配置不正确。(状态代码: %s)'
                         'App Links 允许用户从Web URL或电子邮件重定向到移动应用程序。'
@@ -17,7 +17,7 @@ MANIFEST_DESC = {
     },
     'clear_text_traffic': {
         'title': ('此 APP 启用明文流量'
-                  '<br>[android:usesCleartextTraffic=true]'),
+                  ' [android:usesCleartextTraffic=true]'),
         'level': 'high',
         'description': ('此应用程序使用明文网络流量，例如明文HTTP、FTP栈、下载管理器和播放器。'
                         'API 级别 27 或更低级别的应用的默认值为“true”，'
@@ -28,7 +28,7 @@ MANIFEST_DESC = {
                  '[android:usesCleartextTraffic=true]'),
     },
     'direct_boot_aware': {
-        'title': '此应用程序有直接启动模式 <br>[android:directBootAware=true]',
+        'title': '此应用程序有直接启动模式 [android:directBootAware=true]',
         'level': 'info',
         'description': ('此应用程序可以在用户解锁设备之前运行。'
                         '如果您使用的是应用程序的自定义子类，并且应用程序中的任何组件是直接启动的，'
@@ -38,7 +38,7 @@ MANIFEST_DESC = {
     },
     'has_network_security': {
         'title': ('此应用程序具有网络安全配置'
-                  '<br>[android:networkSecurityConfig=%s]'),
+                  '[android:networkSecurityConfig=%s]'),
         'level': 'info',
         'description': ('网络安全配置功能允许应用在安全的声明性配置文件中自定义其网络安全设置，'
                         '而无需修改应用代码。'
@@ -48,7 +48,7 @@ MANIFEST_DESC = {
     },
     'vulnerable_os_version': {
         'title': ('此应用程序可被安装在易受攻击的修补 Android 版本'
-                  '<br>Android %s, [minSdk=%s]上'),
+                  'Android %s, [minSdk=%s]上'),
         'level': 'high',
         'description': ('此应用程序可以安装在具有多个未修复漏洞的旧版本的 android 上。'
                         '这些设备不会收到来自 Google 的安全更新。'
@@ -58,7 +58,7 @@ MANIFEST_DESC = {
     },
     'vulnerable_os_version2': {
         'title': ('此应用程序可以安装在易受攻击的 Android 版本'
-                  '<br>Android %s, minSdk=%s]上'),
+                  'Android %s, minSdk=%s]上'),
         'level': 'warning',
         'description': ('此应用程序可以安装在具有多个漏洞的旧版本的 android 上。'
                         '支持 Android 版本 => 10, API 29 接收合理的安全更新。'),
@@ -66,7 +66,7 @@ MANIFEST_DESC = {
                  ' %s, [minSdk=%s]'),
     },
     'app_is_debuggable': {
-        'title': '此 APP 启用调式类<br>[android:debuggable=true]',
+        'title': '此 APP 启用调式类[android:debuggable=true]',
         'level': 'high',
         'description': ('在应用程序上启用了调试，'
                         '这使得逆向工程师更容易将调试器挂接到它。'
@@ -75,14 +75,14 @@ MANIFEST_DESC = {
     },
     'app_allowbackup': {
         'title': ('此应用程序的数据可被备份'
-                  '<br>[android:allowBackup=true]'),
+                  '[android:allowBackup=true]'),
         'level': 'warning',
         'description': ('此标志允许任何人通过 adb 备份您的应用程序数据。'
                         '它允许启用 USB 调试的用户从设备中复制应用程序数据。'),
         'name': 'Application Data can be Backed up [android:allowBackup=true]',
     },
     'allowbackup_not_set': {
-        'title': ('此应用程序的数据可被备份<br>[android:allowBackup]'
+        'title': ('此应用程序的数据可被备份 [android:allowBackup]'
                   ' 标志缺失'),
         'level': 'warning',
         'description': ('标志 [android:allowBackup] 应被设置为false。'
@@ -93,27 +93,27 @@ MANIFEST_DESC = {
                  ' is missing.'),
     },
     'app_in_test_mode': {
-        'title': '此应用程序处于测试模式 <br>[android:testOnly=true]',
+        'title': '此应用程序处于测试模式 [android:testOnly=true]',
         'level': 'high',
         'description': ('它可能会暴露自身之外的功能或数据，'
                         '从而导致安全漏洞。'),
         'name': 'Application is in Test Mode [android:testOnly=true]',
     },
     'task_affinity_set': {
-        'title': '为活动 <br>(%s) 设置了 TaskAffinity',
+        'title': '为活动 (%s) 设置了 TaskAffinity',
         'level': 'warning',
         'description': ('如果设置了 taskAffinity，'
-                        '则其他应用程序可以读取发送到属于另一个任务的活动的 Intent。'
+                        '则其他应用程序可以读取发送到属于另一个任务的活动的意图。'
                         '始终使用默认设置，将相关性保留为包名称，'
-                        '以防止发送或接收的 Intent 中的敏感信息被其他应用程序读取。'),
+                        '以防止发送或接收的意图中的敏感信息被其他应用程序读取。'),
         'name': 'TaskAffinity is set for Activity (%s)',
     },
     'non_standard_launchmode': {
         'title': '活动启动模式 (%s) 不是标准的',
         'level': 'warning',
-        'description': ('Activity 不应将启动模式属性设置为"singleTask/singleInstance"，'
-                        '因为它成为 root Activity，并且其他应用程序可以读取调用 Intent 的内容。'
-                        '因此，当 Intent 中包含敏感信息时，需要使用"standard"启动模式属性。'),
+        'description': ('活动不应将启动模式属性设置为"singleTask/singleInstance"，'
+                        '因为它成为 root 活动，并且其他应用程序可以读取调用意图的内容。'
+                        '因此，当意图中包含敏感信息时，需要使用"standard"启动模式属性。'),
         'name': 'Launch Mode of activity (%s) is not standard.',
     },
     'task_hijacking': {
@@ -132,24 +132,24 @@ MANIFEST_DESC = {
     'task_hijacking2': {
         'title': '活动 (%s) 容易受到 StrandHogg 2.0 的攻击',
         'level': 'high',
-        'description': ('Activity 被发现易受StrandHogg 2.0任务劫持漏洞的影响。'
+        'description': ('活动被发现易受StrandHogg 2.0任务劫持漏洞的影响。'
                         '当易受攻击时，其他应用程序可能会在易受攻击的应用程序的活动堆栈上放置恶意活动。'
                         '这使得该应用程序很容易成为网络钓鱼攻击的目标。'
                         '可以通过将启动模式属性设置为"singleInstance"'
-                        '并设置空的taskAffinity (taskAffinity="") 来修复该漏洞。'
+                        '并设置空的 taskAffinity (taskAffinity="") 来修复该漏洞。'
                         '您还可以将应用程序的目标 SDK 版本 (%s) 更新到 29 或更高版本，以在平台级别修复此问题。'),
         'name': 'Activity (%s) is vulnerable to StrandHogg 2.0',
     },
     'improper_provider_permission': {
-        'title': 'Content Provider 权限不当 <br>[%s]',
+        'title': 'Content Provider 权限不当 [%s]',
         'level': 'warning',
-        'description': ('Content Provider权限设置为允许从设备上的任何其他应用程序进行访问。'
+        'description': ('Content Provider 权限设置为允许从设备上的任何其他应用程序进行访问。'
                         'Content Provider可能包含有关应用程序的敏感信息，因此不应共享。'),
         'name': 'Improper Content Provider Permissions',
     },
     'dialer_code_found': {
         'title': ('发现拨号器代码: %s '
-                  ' <br>[android:scheme="android_secret_code"]'),
+                  ' [android:scheme="android_secret_code"]'),
         'level': 'warning',
         'description': ('在manifest中发现了秘密代码。'
                         '当这些代码输入拨号器时，'
@@ -158,7 +158,7 @@ MANIFEST_DESC = {
                  ' [android:scheme="android_secret_code"]'),
     },
     'sms_receiver_port_found': {
-        'title': '找到设置在端口的数据 SMS 接收器: %s <br>[android:port]',
+        'title': '找到设置在端口的数据 SMS 接收器: %s [android:port]',
         'level': 'warning',
         'description': ('二进制 SMS 接收器被配置为监听端口。'
                         '发送到设备的二进制 SMS 消息由应用程序以开发人员选择的方式进行处理。'
@@ -167,14 +167,14 @@ MANIFEST_DESC = {
         'name': 'Data SMS Receiver Set on Port: %s Found. [android:port]',
     },
     'high_intent_priority_found': {
-        'title': '高 Intent 优先级 (%s)<br>[android:priority]',
+        'title': '高意图优先级 (%s) [android:priority]',
         'level': 'warning',
-        'description': ('通过将 Intent 优先级设置为高于其他 Intent，'
+        'description': ('通过将意图优先级设置为高于其他意图，'
                         '应用程序可以有效地覆盖其他请求。'),
         'name': 'High Intent Priority (%s). [android:priority]',
     },
     'high_action_priority_found': {
-        'title': '高 Action 优先级 (%s)<br>[android:priority] ',
+        'title': '高 Action 优先级 (%s) [android:priority] ',
         'level': 'warning',
         'description': ('通过将 Action 优先级设置为高于其他 Action，'
                         '应用程序可以有效地覆盖其他请求'),
@@ -312,7 +312,7 @@ MANIFEST_DESC = {
                  ' [%s] [android:exported=true]'),
     },
     'explicitly_exported': {
-        'title': ('<strong>%s</strong> (%s) 未被保护.'
+        'title': ('<strong>%s</strong> (%s) 未被保护。'
                   ' <br>[android:exported=true]'),
         'level': 'warning',
         'description': ('发现 %s %s 与设备上的其他应用程序共享，'
@@ -320,12 +320,12 @@ MANIFEST_DESC = {
         'name': '%s %s is not Protected. [android:exported=true]',
     },
     'exported_intent_filter_exists': {
-        'title': ('<strong>%s</strong> (%s) 未被保护。<br>'
-                  '存在Intent过滤器'),
+        'title': ('<strong>%s</strong> (%s) 未被保护。'
+                  '存在意图过滤器'),
         'level': 'warning',
         'description': ('发现 %s %s 与设备上的其他应用程序共享，'
                         '因此设备上的任何其他应用程序都可以访问它。'
-                        'Intent过滤器的存在表明 %s 已显式导出。'),
+                        '意图过滤器的存在表明 %s 已显式导出。'),
         'name': '%s %s is not Protected.An intent-filter exists.',
     },
     'exported_provider': {
@@ -385,8 +385,7 @@ MANIFEST_DESC = {
                   '<br>%s <br>[Content Provider, targetSdkVersion < 17]'),
         'level': 'info',
         'description': ('发现 %s %s 与设备上的其他应用程序共享，'
-                        '因此设备上的任何其他应用程序都可以访问它'
-                        '它受许可保护。'),
+                        '因此设备上的任何其他应用程序都可以访问它，它受许可保护。'),
         'name': ('%s %s is Protected by a permission. [%s] [Content Provider, '
                  'targetSdkVersion < 17]'),
     },

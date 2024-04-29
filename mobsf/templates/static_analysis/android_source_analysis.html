@@ -693,8 +693,8 @@
                 <table id="table_browsable" class="table table-bordered table-hover table-striped">
                     <thead>
                           <tr>
-                              <th>ACTIVITY</th>
-                              <th>INTENT</th>
+                              <th>活动</th>
+                              <th>意图</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -703,44 +703,44 @@
                             <td>{{activity}}</td>
                             <td>
                                    {% if intent_details|key:"schemes" %}
-                                      <strong>Schemes</strong>: 
+                                      <strong>协议:</strong>
                                       {% for scheme in intent_details|key:"schemes" %}
                                         {{scheme}},
                                       {% endfor %}
                                        <br/>
                                    {% endif %}
                                    {% if intent_details|key:"hosts" %}
-                                      <strong>Hosts:</strong> {% for host in intent_details|key:"hosts" %}
+                                      <strong>主机:</strong> {% for host in intent_details|key:"hosts" %}
                                         {{host}},
                                       {% endfor %} 
                                       <br/>
                                    {% endif %}
                                    {% if intent_details|key:"ports" %}
-                                      <strong>Ports:</strong> {% for port in intent_details|key:"ports" %}
+                                      <strong>端口:</strong> {% for port in intent_details|key:"ports" %}
                                         {{port}},
                                       {% endfor %} 
                                       <br/>
                                    {% endif %}
                                    {% if intent_details|key:"mime_types" %}
-                                      <strong>Mime Types:</strong> {% for mime in intent_details|key:"mime_types" %}
+                                      <strong>Mime 类型:</strong> {% for mime in intent_details|key:"mime_types" %}
                                         {{mime}},
                                       {% endfor %} 
                                       <br/>
                                    {% endif %}
                                    {% if intent_details|key:"paths" %}
-                                      <strong>Paths:</strong> {% for path in intent_details|key:"paths" %}
+                                      <strong>路径:</strong> {% for path in intent_details|key:"paths" %}
                                         {{path}},
                                       {% endfor %} 
                                       <br/>
                                    {% endif %}
                                    {% if intent_details|key:"path_prefixs" %}
-                                      <strong>Path Prefixes:</strong> {% for prefix in intent_details|key:"path_prefixs" %}
+                                      <strong>路径前缀:</strong> {% for prefix in intent_details|key:"path_prefixs" %}
                                         {{prefix}},
                                       {% endfor %} 
                                       <br/>
                                    {% endif %}
                                    {% if intent_details|key:"path_patterns" %}
-                                      <strong>Path Patterns:</strong> {% for pattern in intent_details|key:"path_patterns" %}
+                                      <strong>路径模式:</strong> {% for pattern in intent_details|key:"path_patterns" %}
                                         {{pattern}},
                                       {% endfor %} 
                                       <br/>
@@ -1377,7 +1377,7 @@
                       <strong>经度: </strong>{{details|key:"geolocation"|key:"longitude"}} <br/>
                       <strong>查看: <a target="_blank" href="http://maps.google.com/maps?q={{details|key:"geolocation"|key:"latitude"}},{{details|key:"geolocation"|key:"longitude"}}">Google Map</a>
                     {% else %}
-                    无地理位置信息。
+                    未找到地理位置信息。
                     {% endif %}
                   </td>
                   </tr>

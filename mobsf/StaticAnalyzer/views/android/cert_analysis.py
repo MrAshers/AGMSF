@@ -73,16 +73,16 @@ def get_cert_details(data):
     certlist = []
     x509_cert = asn1crypto.x509.Certificate.load(data)
     subject = get_certificate_name_string(x509_cert.subject, short=True)
-    certlist.append(f'X.509 Subject: {subject}')
-    certlist.append(f'Signature Algorithm: {x509_cert.signature_algo}')
+    certlist.append(f'X.509 主题: {subject}')
+    certlist.append(f'签名算法: {x509_cert.signature_algo}')
     valid_from = x509_cert['tbs_certificate']['validity']['not_before'].native
-    certlist.append(f'Valid From: {valid_from}')
+    certlist.append(f'有效期开始时间: {valid_from}')
     valid_to = x509_cert['tbs_certificate']['validity']['not_after'].native
-    certlist.append(f'Valid To: {valid_to}')
+    certlist.append(f'有效期到期时间: {valid_to}')
     issuer = get_certificate_name_string(x509_cert.issuer, short=True)
-    certlist.append(f'Issuer: {issuer}')
-    certlist.append(f'Serial Number: {hex(x509_cert.serial_number)}')
-    certlist.append(f'Hash Algorithm: {x509_cert.hash_algo}')
+    certlist.append(f'颁发者信息: {issuer}')
+    certlist.append(f'证书序列号: {hex(x509_cert.serial_number)}')
+    certlist.append(f'Hash 算法: {x509_cert.hash_algo}')
     for k, v in HASH_FUNCS.items():
         certlist.append(f'{k}: {v(data).hexdigest()}')
     return certlist
@@ -117,9 +117,9 @@ def get_pub_key_details(data):
         # Untested, possibly wrong key size and fingerprint
         to_hash += data[25:]
     fingerprint = gen_sha256_hash(to_hash)
-    certlist.append(f'PublicKey Algorithm: {alg}')
-    certlist.append(f'Bit Size: {x509_public_key.key_size}')
-    certlist.append(f'Fingerprint: {fingerprint}')
+    certlist.append(f'公钥算法: {alg}')
+    certlist.append(f'证书位大小: {x509_public_key.key_size}')
+    certlist.append(f'证书指纹: {fingerprint}')
     return certlist
 
 
@@ -185,20 +185,20 @@ def apksigtool_cert(apk_path, tools_dir):
                             pub_keys.append(j)
 
         if signed:
-            certlist.append('Binary is signed')
+            certlist.append('二进制文件已被签名')
         else:
-            certlist.append('Binary is not signed')
+            certlist.append('二进制文件未被签名')
         v1, v2, v3, v4 = get_signature_versions(apk_path, tools_dir, signed)
-        certlist.append(f'v1 signature: {v1}')
-        certlist.append(f'v2 signature: {v2}')
-        certlist.append(f'v3 signature: {v3}')
-        certlist.append(f'v4 signature: {v4}')
+        certlist.append(f'v1 签名: {v1}')
+        certlist.append(f'v2 签名: {v2}')
+        certlist.append(f'v3 签名: {v3}')
+        certlist.append(f'v4 签名: {v4}')
         certlist.extend(certs)
         certlist.extend(pub_keys)
-        certlist.append(f'Found {certs_no} unique certificates')
+        certlist.append(f'找到 {certs_no} 个证书')
     except Exception:
         logger.exception('Failed to parse code signing certificate')
-        certlist.append('Missing certificate')
+        certlist.append('证书缺失')
     return {
         'cert_data': '\n'.join(certlist),
         'signed': signed,
@@ -216,15 +216,15 @@ def get_cert_data(a, app_path, tools_dir):
     signed = False
     if a.is_signed():
         signed = True
-        certlist.append('Binary is signed')
+        certlist.append('二进制文件已被签名')
     else:
-        certlist.append('Binary is not signed')
-        certlist.append('Missing certificate')
+        certlist.append('二进制文件未被签名')
+        certlist.append('证书缺失')
     v1, v2, v3, v4 = get_signature_versions(app_path, tools_dir, signed)
-    certlist.append(f'v1 signature: {v1}')
-    certlist.append(f'v2 signature: {v2}')
-    certlist.append(f'v3 signature: {v3}')
-    certlist.append(f'v4 signature: {v4}')
+    certlist.append(f'v1 签名: {v1}')
+    certlist.append(f'v2 签名: {v2}')
+    certlist.append(f'v3 签名: {v3}')
+    certlist.append(f'v4 签名: {v4}')
 
     certs = set(a.get_certificates_der_v3() + a.get_certificates_der_v2()
                 + [a.get_certificate_der(x)
@@ -238,7 +238,7 @@ def get_cert_data(a, app_path, tools_dir):
         certlist.extend(get_pub_key_details(public_key))
 
     if len(certs) > 0:
-        certlist.append(f'Found {len(certs)} unique certificates')
+        certlist.append(f'找到 {len(certs)} 个证书')
 
     return {
         'cert_data': '\n'.join(certlist),

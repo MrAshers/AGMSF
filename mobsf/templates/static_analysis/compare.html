@@ -444,15 +444,15 @@
                                         <thead>
                                             <tr>
                                                 <th></th>
-                                                <th>ANTI-VM</th>
-                                                <th>COMPILER</th>
-                                                <th>OBFUSCATOR</th>
-                                                <th>PACKER</th>
-                                                <th>DROPPER</th>
-                                                <th>MANIPULATOR</th>
-                                                <th>ANTI-ASSEMBLY</th>
-                                                <th>ANTI-DEBUG</th>
-                                                <th>ABNORMAL PATTERN</th>
+                                                <th>防虚拟机</th>
+                                                <th>编译器生成</th>
+                                                <th>混淆处理</th>
+                                                <th>打包器</th>
+                                                <th>投放器</th>
+                                                <th>操纵器</th>
+                                                <th>防汇编</th>
+                                                <th>防调试</th>
+                                                <th>异常模式</th>
                                             </tr>
                                         </thead>
                                            <tr>
@@ -650,8 +650,8 @@
                                         <table>
                                             <thead>
                                                 <tr>
-                                                    <th>ACTIVITES</th>
-                                                    <th>INTENT</th>
+                                                    <th>活动</th>
+                                                    <th>意图</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -660,44 +660,44 @@
                                                     <td>{{activity}}</td>
                                                     <td>
                                                         {% if intent_details|key:"schemes" %}
-                                                        <strong>Schemes</strong>:
+                                                        <strong>协议:</strong>
                                                         {% for scheme in intent_details|key:"schemes" %}
                                                         {{scheme}},
                                                         {% endfor %}
                                                         <br/>
                                                         {% endif %}
                                                         {% if intent_details|key:"hosts" %}
-                                                        <strong>Hosts:</strong> {% for host in intent_details|key:"hosts" %}
+                                                        <strong>主机:</strong> {% for host in intent_details|key:"hosts" %}
                                                         {{host}},
                                                         {% endfor %}
                                                         <br/>
                                                         {% endif %}
                                                         {% if intent_details|key:"ports" %}
-                                                        <strong>Ports:</strong> {% for port in intent_details|key:"ports" %}
+                                                        <strong>端口:</strong> {% for port in intent_details|key:"ports" %}
                                                         {{port}},
                                                         {% endfor %}
                                                         <br/>
                                                         {% endif %}
                                                         {% if intent_details|key:"mime_types" %}
-                                                        <strong>Mime Types:</strong> {% for mime in intent_details|key:"mime_types" %}
+                                                        <strong>Mime 类型:</strong> {% for mime in intent_details|key:"mime_types" %}
                                                         {{mime}},
                                                         {% endfor %}
                                                         <br/>
                                                         {% endif %}
                                                         {% if intent_details|key:"paths" %}
-                                                        <strong>Paths:</strong> {% for path in intent_details|key:"paths" %}
+                                                        <strong>路径:</strong> {% for path in intent_details|key:"paths" %}
                                                         {{path}},
                                                         {% endfor %}
                                                         <br/>
                                                         {% endif %}
                                                         {% if intent_details|key:"path_prefixs" %}
-                                                        <strong>Path Prefixes:</strong> {% for prefix in intent_details|key:"path_prefixs" %}
+                                                        <strong>路径前缀:</strong> {% for prefix in intent_details|key:"path_prefixs" %}
                                                         {{prefix}},
                                                         {% endfor %}
                                                         <br/>
                                                         {% endif %}
                                                         {% if intent_details|key:"path_patterns" %}
-                                                        <strong>Path Patterns:</strong> {% for pattern in intent_details|key:"path_patterns" %}
+                                                        <strong>路径模式:</strong> {% for pattern in intent_details|key:"path_patterns" %}
                                                         {{pattern}},
                                                         {% endfor %}
                                                         <br/>
@@ -715,8 +715,8 @@
                                         <table>
                                             <thead>
                                                 <tr>
-                                                    <th>ACTIVITY</th>
-                                                    <th>INTENT</th>
+                                                    <th>活动</th>
+                                                    <th>意图</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -725,44 +725,44 @@
                                                     <td>{{activity}}</td>
                                                     <td>
                                                         {% if intent_details|key:"schemes" %}
-                                                        <strong>Schemes</strong>:
+                                                        <strong>协议:</strong>
                                                         {% for scheme in intent_details|key:"schemes" %}
                                                         {{scheme}},
                                                         {% endfor %}
                                                         <br/>
                                                         {% endif %}
                                                         {% if intent_details|key:"hosts" %}
-                                                        <strong>Hosts:</strong> {% for host in intent_details|key:"hosts" %}
+                                                        <strong>主机:</strong> {% for host in intent_details|key:"hosts" %}
                                                         {{host}},
                                                         {% endfor %}
                                                         <br/>
                                                         {% endif %}
                                                         {% if intent_details|key:"ports" %}
-                                                        <strong>Ports:</strong> {% for port in intent_details|key:"ports" %}
+                                                        <strong>端口:</strong> {% for port in intent_details|key:"ports" %}
                                                         {{port}},
                                                         {% endfor %}
                                                         <br/>
                                                         {% endif %}
                                                         {% if intent_details|key:"mime_types" %}
-                                                        <strong>Mime Types:</strong> {% for mime in intent_details|key:"mime_types" %}
+                                                        <strong>Mime 类型:</strong> {% for mime in intent_details|key:"mime_types" %}
                                                         {{mime}},
                                                         {% endfor %}
                                                         <br/>
                                                         {% endif %}
                                                         {% if intent_details|key:"paths" %}
-                                                        <strong>Paths:</strong> {% for path in intent_details|key:"paths" %}
+                                                        <strong>路径:</strong> {% for path in intent_details|key:"paths" %}
                                                         {{path}},
                                                         {% endfor %}
                                                         <br/>
                                                         {% endif %}
                                                         {% if intent_details|key:"path_prefixs" %}
-                                                        <strong>Path Prefixes:</strong> {% for prefix in intent_details|key:"path_prefixs" %}
+                                                        <strong>路径前缀:</strong> {% for prefix in intent_details|key:"path_prefixs" %}
                                                         {{prefix}},
                                                         {% endfor %}
                                                         <br/>
                                                         {% endif %}
                                                         {% if intent_details|key:"path_patterns" %}
-                                                        <strong>Path Patterns:</strong> {% for pattern in intent_details|key:"path_patterns" %}
+                                                        <strong>路径模式:</strong> {% for pattern in intent_details|key:"path_patterns" %}
                                                         {{pattern}},
                                                         {% endfor %}
                                                         <br/>
@@ -779,8 +779,8 @@
                                         <table>
                                             <thead>
                                                 <tr>
-                                                    <th>ACTIVITY</th>
-                                                    <th>INTENT</th>
+                                                    <th>活动</th>
+                                                    <th>意图</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -789,44 +789,44 @@
                                                     <td>{{activity}}</td>
                                                     <td>
                                                         {% if intent_details|key:"schemes" %}
-                                                        <strong>Schemes</strong>:
+                                                        <strong>协议:</strong>
                                                         {% for scheme in intent_details|key:"schemes" %}
                                                         {{scheme}},
                                                         {% endfor %}
                                                         <br/>
                                                         {% endif %}
                                                         {% if intent_details|key:"hosts" %}
-                                                        <strong>Hosts:</strong> {% for host in intent_details|key:"hosts" %}
+                                                        <strong>主机:</strong> {% for host in intent_details|key:"hosts" %}
                                                         {{host}},
                                                         {% endfor %}
                                                         <br/>
                                                         {% endif %}
                                                         {% if intent_details|key:"ports" %}
-                                                        <strong>Ports:</strong> {% for port in intent_details|key:"ports" %}
+                                                        <strong>端口:</strong> {% for port in intent_details|key:"ports" %}
                                                         {{port}},
                                                         {% endfor %}
                                                         <br/>
                                                         {% endif %}
                                                         {% if intent_details|key:"mime_types" %}
-                                                        <strong>Mime Types:</strong> {% for mime in intent_details|key:"mime_types" %}
+                                                        <strong>Mime 类型:</strong> {% for mime in intent_details|key:"mime_types" %}
                                                         {{mime}},
                                                         {% endfor %}
                                                         <br/>
                                                         {% endif %}
                                                         {% if intent_details|key:"paths" %}
-                                                        <strong>Paths:</strong> {% for path in intent_details|key:"paths" %}
+                                                        <strong>路径:</strong> {% for path in intent_details|key:"paths" %}
                                                         {{path}},
                                                         {% endfor %}
                                                         <br/>
                                                         {% endif %}
                                                         {% if intent_details|key:"path_prefixs" %}
-                                                        <strong>Path Prefixes:</strong> {% for prefix in intent_details|key:"path_prefixs" %}
+                                                        <strong>路径前缀:</strong> {% for prefix in intent_details|key:"path_prefixs" %}
                                                         {{prefix}},
                                                         {% endfor %}
                                                         <br/>
                                                         {% endif %}
                                                         {% if intent_details|key:"path_patterns" %}
-                                                        <strong>Path Patterns:</strong> {% for pattern in intent_details|key:"path_patterns" %}
+                                                        <strong>路径模式:</strong> {% for pattern in intent_details|key:"path_patterns" %}
                                                         {{pattern}},
                                                         {% endfor %}
                                                         <br/>

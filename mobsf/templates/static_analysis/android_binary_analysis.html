@@ -844,8 +844,8 @@
                 <table id="table_browsable" class="table table-bordered table-hover table-striped">
                     <thead>
                           <tr>
-                              <th>ACTIVITY</th>
-                              <th>INTENT</th>
+                              <th>活动</th>
+                              <th>意图</th>
                           </tr>
                       </thead>
                       <tbody>
@@ -854,44 +854,44 @@
                             <td>{{activity}}</td>
                             <td>
                                    {% if intent_details|key:"schemes" %}
-                                      <strong>Schemes</strong>: 
+                                      <strong>协议:</strong>
                                       {% for scheme in intent_details|key:"schemes" %}
                                         {{scheme}},
                                       {% endfor %}
                                        <br/>
                                    {% endif %}
                                    {% if intent_details|key:"hosts" %}
-                                      <strong>Hosts:</strong> {% for host in intent_details|key:"hosts" %}
+                                      <strong>主机:</strong> {% for host in intent_details|key:"hosts" %}
                                         {{host}},
                                       {% endfor %} 
                                       <br/>
                                    {% endif %}
                                    {% if intent_details|key:"ports" %}
-                                      <strong>Ports:</strong> {% for port in intent_details|key:"ports" %}
+                                      <strong>端口:</strong> {% for port in intent_details|key:"ports" %}
                                         {{port}},
                                       {% endfor %} 
                                       <br/>
                                    {% endif %}
                                    {% if intent_details|key:"mime_types" %}
-                                      <strong>Mime Types:</strong> {% for mime in intent_details|key:"mime_types" %}
+                                      <strong>Mime 类型:</strong> {% for mime in intent_details|key:"mime_types" %}
                                         {{mime}},
                                       {% endfor %} 
                                       <br/>
                                    {% endif %}
                                    {% if intent_details|key:"paths" %}
-                                      <strong>Paths:</strong> {% for path in intent_details|key:"paths" %}
+                                      <strong>路径:</strong> {% for path in intent_details|key:"paths" %}
                                         {{path}},
                                       {% endfor %} 
                                       <br/>
                                    {% endif %}
                                    {% if intent_details|key:"path_prefixs" %}
-                                      <strong>Path Prefixes:</strong> {% for prefix in intent_details|key:"path_prefixs" %}
+                                      <strong>路径前缀:</strong> {% for prefix in intent_details|key:"path_prefixs" %}
                                         {{prefix}},
                                       {% endfor %} 
                                       <br/>
                                    {% endif %}
                                    {% if intent_details|key:"path_patterns" %}
-                                      <strong>Path Patterns:</strong> {% for pattern in intent_details|key:"path_patterns" %}
+                                      <strong>路径模式:</strong> {% for pattern in intent_details|key:"path_patterns" %}
                                         {{pattern}},
                                       {% endfor %} 
                                       <br/>
@@ -1310,7 +1310,7 @@
                       {% endfor %}
                     {% else %}
                       <a class="btn btn-primary btn-xs" data-toggle="collapse" href="#collapsecode{{forloop.counter}}" role="button" aria-expanded="false" aria-controls="collapsecode{{forloop.counter}}">
-                        Show Files
+                        查看文件
                       </a>
                       <div class="collapse" id="collapsecode{{forloop.counter}}">
                         {% for file_path, lines in details.files.items %}
@@ -1382,7 +1382,7 @@
                   </thead>
                   <tbody>
             {% if not binary_analysis %}
-              无数据
+              未发现共享库。
             {% endif %}
              {% for so in binary_analysis %}
              <tr>
@@ -1568,25 +1568,25 @@
                             <tr>
                               <td>
                                {% if detail == "anti_vm" %}
-                               <span class="badge bg-warning">Anti-VM Code</span>
+                               <span class="badge bg-warning">防虚拟机代码</span>
                                {% elif detail == "anti_disassembly" %}
-                               <span class="badge bg-warning">Anti Disassembly Code</span>
+                               <span class="badge bg-warning">防反汇编代码</span>
                                {% elif detail == "anti_debug" %}
-                               <span class="badge bg-warning">Anti Debug Code</span>
+                               <span class="badge bg-warning">防调试代码</span>
                                {% elif detail == "compiler" %}
-                               <span class="badge bg-info">Compiler</span>
+                               <span class="badge bg-info">编译器生成</span>
                                {% elif detail == "abnormal" %}
-                               <span class="badge bg-warning">Abnormal Code</span>
+                               <span class="badge bg-warning">异常代码</span>
                                {% elif detail == "obfuscator" %}
-                               <span class="badge bg-warning">Obfuscator</span>
+                               <span class="badge bg-warning">混淆处理</span>
                                {% elif detail == "protector" %}
-                               <span class="badge bg-info">Protector</span>
+                               <span class="badge bg-info">有保护措施</span>
                                {% elif detail == "packer" %}
-                               <span class="badge bg-danger">Packer Found</span>
+                               <span class="badge bg-danger">检测到打包器</span>
                                {% elif detail == "dropper" %}
-                               <span class="badge bg-danger">Dropper Found</span>
+                               <span class="badge bg-danger">检测到投放器</span>
                                {% elif detail == "manipulator" %}
-                               <span class="badge bg-warning">Manipulator Found</span>
+                               <span class="badge bg-warning">检测到操纵器</span>
                                {% else %}
                                <span class="badge bg-info">{{detail}}</span>
                                {% endif %}
@@ -1874,7 +1874,7 @@
                       <strong>经度: </strong>{{details|key:"geolocation"|key:"longitude"}} <br/>
                       <strong>查看: <a target="_blank" href="http://maps.google.com/maps?q={{details|key:"geolocation"|key:"latitude"}},{{details|key:"geolocation"|key:"longitude"}}">Google Map</a>
                     {% else %}
-                    无地理位置信息。
+                    未找到地理位置信息。
                     {% endif %}
                   </td>
                   </tr>

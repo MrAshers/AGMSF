@@ -46,7 +46,7 @@
                         <th>文件</th>
                         <th>APP类型</th>
                         <th>HASH</th>
-                        <th>检测时间</th>
+                        <th>分析时间</th>
                         <th style="width: 9%">操作</th>
                     </tr>
                     </thead>
@@ -70,7 +70,7 @@
                                   <p><a class="btn btn-primary btn-sm" href="../{{ e.ANALYZER }}/{{e.MD5}}/"><i class="fas fa-eye"></i> 静态分析报告</a>
                                   </p>
                                 {% else %}
-                                </br><span class="badge bg-warning">检测失败</span>
+                                </br><span class="badge bg-warning">分析失败</span>
                                 {% endif %}
                             </td>
                             <td>{{ e.FILE_NAME }}
@@ -154,7 +154,7 @@
         Swal.fire({
             title: '<strong>选择一个APP进行比较</strong>',
             type: 'info',
-            text: '请选择另一个检测结果进行比较',
+            text: '请选择另一个分析结果进行比较',
             timer: 10000
         });
         diff_first_md5 = item.attr('id').slice(0, 32);

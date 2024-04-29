@@ -1,23 +1,23 @@
 - id: api_native_code
-  message: Loading Native Code (Shared Library)
+  message: 加载本地代码（共享库）
   type: Regex
   pattern: System\.loadLibrary\(|System\.load\(
   input_case: exact
   severity: info
 - id: api_get_system_service
-  message: Get System Service
+  message: 获取系统服务
   type: Regex
   pattern: getSystemService
   input_case: exact
   severity: info
 - id: api_get_running_app_processes
-  message: Get Running App Processes
+  message: 获取正在运行的应用程序进程
   type: Regex
   pattern: getRunningAppProcesses\(
   input_case: exact
   severity: info
 - id: api_dexloading
-  message: Dynamic Class and Dexloading
+  message: 动态类和 Dex 加载
   type: RegexOr
   pattern:
     - dalvik\.system\.DexClassLoader
@@ -31,7 +31,7 @@
   input_case: exact
   severity: info
 - id: api_java_reflection
-  message: Java Reflection
+  message: Java 反射
   type: RegexOr
   pattern:
     - java\.lang\.reflect\.Method
@@ -40,7 +40,7 @@
   input_case: exact
   severity: info
 - id: api_crypto
-  message: Crypto
+  message: 加密
   type: RegexOr
   pattern:
     - javax\.crypto
@@ -53,7 +53,7 @@
   input_case: exact
   severity: info
 - id: api_start_activity
-  message: Starting Activity
+  message: 启动活动
   type: RegexOr
   pattern:
     - startActivity\(
@@ -61,7 +61,7 @@
   input_case: exact
   severity: info
 - id: api_start_service
-  message: Starting Service
+  message: 启动服务
   type: RegexOr
   pattern:
     - startService\(
@@ -69,7 +69,7 @@
   input_case: exact
   severity: info
 - id: api_send_broadcast
-  message: Sending Broadcast
+  message: 发送广播
   type: RegexOr
   pattern:
     - sendBroadcast\(
@@ -78,7 +78,7 @@
   input_case: exact
   severity: info
 - id: api_local_file_io
-  message: Local File I/O Operations
+  message: 本地文件 I/O 操作
   type: RegexOr
   pattern:
     - OpenFileOutput
@@ -97,7 +97,7 @@
   input_case: exact
   severity: info
 - id: api_ipc
-  message: Inter Process Communication
+  message: 进程间通信
   type: RegexOr
   pattern:
     - IRemoteService\.Stub
@@ -106,7 +106,7 @@
   input_case: exact
   severity: info
 - id: api_web
-  message: 'HTTP Requests, Connections and Sessions'
+  message: 'HTTP 请求、连接和会话'
   type: RegexOr
   pattern:
     - http\.client\.HttpClient
@@ -115,7 +115,7 @@
   input_case: exact
   severity: info
 - id: api_http_connection
-  message: HTTP Connection
+  message: HTTP 连接
   type: RegexAnd
   pattern:
     - HttpURLConnection|org\.apache\.http
@@ -123,7 +123,7 @@
   input_case: exact
   severity: info
 - id: api_dex_manipulate
-  message: Load and Manipulate Dex Files
+  message: 加载和操作 Dex 文件
   type: RegexAnd
   pattern:
     - >-
@@ -132,13 +132,13 @@
   input_case: exact
   severity: info
 - id: api_content_provider
-  message: Content Provider
+  message: 内容提供器
   type: Regex
   pattern: android\.content\.ContentProvider
   input_case: exact
   severity: info
 - id: api_obfuscation
-  message: Obfuscation
+  message: 混淆
   type: RegexAnd
   pattern:
     - utils\.AESObfuscator
@@ -146,7 +146,7 @@
   input_case: exact
   severity: info
 - id: api_os_command
-  message: Execute OS Command
+  message: 执行操作系统命令
   type: RegexAnd
   pattern:
     - \.exec\(
@@ -154,7 +154,7 @@
   input_case: exact
   severity: info
 - id: api_kill_process
-  message: Kill Process
+  message: 终止进程
   type: RegexOr
   pattern:
     - Process\.killProcess\(
@@ -162,7 +162,7 @@
   input_case: exact
   severity: info
 - id: api_keystore
-  message: Android Keystore
+  message: Android 密钥库
   type: RegexAnd
   pattern:
     - security\.KeyStore
@@ -170,7 +170,7 @@
   input_case: exact
   severity: info
 - id: api_tcp_server
-  message: TCP Server Socket
+  message: TCP 服务器套接字
   type: RegexAnd
   pattern:
     - ServerSocket
@@ -178,7 +178,7 @@
   input_case: exact
   severity: info
 - id: api_tcp
-  message: TCP Socket
+  message: TCP 套接字
   type: RegexAnd
   pattern:
     - Socket
@@ -186,7 +186,7 @@
   input_case: exact
   severity: info
 - id: api_udp_datagram
-  message: UDP Datagram Packet
+  message: UDP 数据报包
   type: RegexAnd
   pattern:
     - DatagramPacket
@@ -194,7 +194,7 @@
   input_case: exact
   severity: info
 - id: api_udp_datagram_socket
-  message: UDP Datagram Socket
+  message: UDP 数据报套接字
   type: RegexAnd
   pattern:
     - DatagramSocket
@@ -202,7 +202,7 @@
   input_case: exact
   severity: info
 - id: api_webview
-  message: WebView JavaScript Interface
+  message: WebView JavaScript 接口
   type: RegexAnd
   pattern:
     - addJavascriptInterface
@@ -211,7 +211,7 @@
   input_case: exact
   severity: info
 - id: api_webview_get
-  message: WebView GET Request
+  message: WebView GET 请求
   type: RegexAnd
   pattern:
     - WebView
@@ -220,7 +220,7 @@
   input_case: exact
   severity: info
 - id: api_webview_post
-  message: WebView POST Request
+  message: WebView POST 请求
   type: RegexAnd
   pattern:
     - WebView
@@ -229,7 +229,7 @@
   input_case: exact
   severity: info
 - id: api_notifications
-  message: Android Notifications
+  message: Android 通知
   type: RegexAnd
   pattern:
     - app\.NotificationManager
@@ -237,7 +237,7 @@
   input_case: exact
   severity: info
 - id: api_get_cell
-  message: Get Cell Information
+  message: 获取基站信息
   type: RegexAnd
   pattern:
     - telephony\.TelephonyManager
@@ -245,7 +245,7 @@
   input_case: exact
   severity: info
 - id: api_get_location
-  message: Get Cell Location
+  message: 获取基站位置
   type: RegexAnd
   pattern:
     - telephony\.TelephonyManager
@@ -253,7 +253,7 @@
   input_case: exact
   severity: info
 - id: api_get_subscriber
-  message: Get Subscriber ID
+  message: 获取订阅者 ID
   type: RegexAnd
   pattern:
     - telephony\.TelephonyManager
@@ -261,7 +261,7 @@
   input_case: exact
   severity: info
 - id: api_get_device
-  message: 'Get Device ID, IMEI,MEID/ESN etc'
+  message: '获取设备 ID、IMEI、MEID/ESN 等'
   type: RegexAnd
   pattern:
     - telephony\.TelephonyManager
@@ -271,7 +271,7 @@
   input_case: exact
   severity: info
 - id: api_get_soft
-  message: 'Get Software Version, IMEI/SV etc'
+  message: '获取软件版本、IMEI/SV 等'
   type: RegexAnd
   pattern:
     - telephony\.TelephonyManager
@@ -279,7 +279,7 @@
   input_case: exact
   severity: info
 - id: api_get_sim_serial
-  message: Get SIM Serial Number
+  message: 获取 SIM 卡序列号
   type: RegexAnd
   pattern:
     - telephony\.TelephonyManager
@@ -287,7 +287,7 @@
   input_case: exact
   severity: info
 - id: api_get_sim_provider
-  message: Get SIM Provider Details
+  message: 获取 SIM 卡提供商详情
   type: RegexAnd
   pattern:
     - telephony\.TelephonyManager
@@ -295,7 +295,7 @@
   input_case: exact
   severity: info
 - id: api_get_sim_operator
-  message: Get SIM Operator Name
+  message: 获取 SIM 卡运营商名称
   type: RegexAnd
   pattern:
     - telephony\.TelephonyManager
@@ -303,7 +303,7 @@
   input_case: exact
   severity: info
 - id: api_get_phone
-  message: Get Phone Number
+  message: 获取电话号码
   type: RegexAnd
   pattern:
     - telephony\.TelephonyManager
@@ -311,7 +311,7 @@
   input_case: exact
   severity: info
 - id: api_sms_call
-  message: 'Query Database of SMS, Contacts etc'
+  message: '查询短信、联系人等数据库'
   type: RegexAnd
   pattern:
     - content\.ContentResolver
@@ -319,7 +319,7 @@
   input_case: exact
   severity: info
 - id: api_hide_app_icon
-  message: Hide application icon
+  message: 隐藏应用程序图标
   type: RegexAnd
   pattern:
     - \.setComponentEnabledSetting\(
@@ -327,7 +327,7 @@
   input_case: exact
   severity: info
 - id: api_send_sms
-  message: Send SMS
+  message: 发送短信
   type: RegexAndOr
   pattern:
     - telephony\.SmsManager
@@ -337,7 +337,7 @@
   input_case: exact
   severity: info
 - id: api_url
-  message: URL Connection to file/http/https/ftp/jar
+  message: URL 连接到 file/http/https/ftp/jar
   type: RegexAndOr
   pattern:
     - net\.URLConnection
@@ -347,7 +347,7 @@
   input_case: exact
   severity: info
 - id: api_jar_url
-  message: JAR URL Connection
+  message: JAR URL 连接
   type: RegexAndOr
   pattern:
     - net\.JarURLConnection
@@ -356,7 +356,7 @@
   input_case: exact
   severity: info
 - id: api_https_connection
-  message: HTTPS Connection
+  message: HTTPS 连接
   type: RegexAndOr
   pattern:
     - javax\.net\.ssl\.HttpsURLConnection
@@ -365,7 +365,7 @@
   input_case: exact
   severity: info
 - id: api_clipboard
-  message: Set or Read Clipboard data
+  message: 设置或读取剪贴板数据
   type: RegexAndOr
   pattern:
     - content\.ClipboardManager
@@ -374,7 +374,7 @@
   input_case: exact
   severity: info
 - id: api_base64_encode
-  message: Base64 Encode
+  message: Base64 编码
   type: RegexAndOr
   pattern:
     - android\.util\.Base64
@@ -383,7 +383,7 @@
   input_case: exact
   severity: info
 - id: api_base64_decode
-  message: Base64 Decode
+  message: Base64 解码
   type: RegexAndOr
   pattern:
     - android\.util\.Base64
@@ -392,7 +392,7 @@
   input_case: exact
   severity: info
 - id: api_message_digest
-  message: Message Digest
+  message: 消息摘要
   type: RegexAndOr
   pattern:
     - java\.security\.MessageDigest
@@ -401,7 +401,7 @@
   input_case: exact
   severity: info
 - id: api_gps
-  message: GPS Location
+  message: GPS 位置
   type: RegexAndOr
   pattern:
     - android\.location
@@ -412,7 +412,7 @@
   input_case: exact
   severity: info
 - id: api_installed
-  message: Get Installed Applications
+  message: 获取已安装的应用程序
   type: RegexAndOr
   pattern:
     - getPackageManager\(
@@ -422,7 +422,7 @@
   input_case: exact
   severity: info
 - id: api_get_wifi
-  message: Get WiFi Details
+  message: 获取 WiFi 详情
   type: RegexAndOr
   pattern:
     - wifi\.WifiManager
@@ -435,7 +435,7 @@
   input_case: exact
   severity: info
 - id: api_get_network
-  message: Get Network Interface information
+  message: 获取网络接口信息
   type: RegexAndOr
   pattern:
     - NetworkInterface
@@ -445,7 +445,7 @@
   input_case: exact
   severity: info
 - id: api_get_advertising
-  message: Get Android Advertising ID
+  message: 获取 Android 广告 ID
   type: RegexAndOr
   pattern:
     - AdvertisingIdClient
@@ -454,19 +454,19 @@
   input_case: exact
   severity: info
 - id: api_certificate_handling
-  message: Certificate Handling
+  message: 证书处理
   type: Regex
   pattern: \.SSLSocketFactory
   input_case: exact
   severity: info
 - id: api_javascript_interface_methods
-  message: JavaScript Interface Methods
+  message: JavaScript 接口方法
   type: Regex
   pattern: \@JavascriptInterface|\@android\.webkit\.JavascriptInterface
   input_case: exact
   severity: info
 - id: api_passkeys
-  message: Passkeys
+  message: 密钥
   type: Regex
   pattern: CredentialManager\.create\(|GetPublicKeyCredentialOption\(|\.getAuthenticationResponseJson\(|CreatePublicKeyCredentialRequest\(
   input_case: exact
