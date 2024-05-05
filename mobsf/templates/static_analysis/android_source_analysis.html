@@ -36,7 +36,7 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
-          
+
           <li class="nav-item">
             <a href="#information" class="nav-link">
               <i class="nav-icon fas fa-info-circle"></i>
@@ -77,7 +77,7 @@
               </p>
             </a>
           </li>
-          
+
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-shield-alt"></i>
@@ -288,7 +288,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
-        
+
           <div class="card">
             <div class="card-body">
               <h5 class="card-title"></h5>
@@ -305,7 +305,7 @@
                   <span class="badge bg-warning">跟踪器检测</span> <strong>{{ trackers.detected_trackers }}/{{ trackers.total_trackers }}</strong><br/>
                   {% else %}
                     <span class="badge bg-success">跟踪器检测</span> <strong>{{ trackers.detected_trackers }}/{{ trackers.total_trackers }}</strong><br/>
-                  {% endif %}  
+                  {% endif %}
                 </p>
                   <p> <a href="{% url 'appsec_dashboard' checksum=md5 %}" class="btn btn-outline-primary btn-sm" role="button"><i class="fas fa-user-shield"></i> AndroMSF 分数卡</a></p>
 
@@ -319,20 +319,20 @@
                   <span class="badge bg-primary">MD5</span>
                   {{ md5 }}<br/>
                   <span class="badge bg-primary">SHA1</span>
-                  {{ sha1 }}<br/>           
+                  {{ sha1 }}<br/>
                   <span class="badge bg-primary">SHA256</span>
                   {{ sha256 }}<br/>
                 </div>
                 <div class="col-4">
                   <p><strong><i class="fas fa-info"></i> APP信息 </strong></p>
                   <span class="badge bg-primary">App 名</span>
-                  {{ app_name }}<br/>                                   
+                  {{ app_name }}<br/>
                   <span class="badge bg-primary">包名</span>
                   {{ package_name }}<br/>
                   <span class="badge bg-primary">Main Activity</span>
                   {{ main_activity }}<br/>
                   <span class="badge bg-primary">Target SDK</span>
-                  {{ target_sdk }}           
+                  {{ target_sdk }}
                   <span class="badge bg-primary">Min SDK</span>
                     {{ min_sdk }}
                   <span class="badge bg-primary">Max SDK</span>
@@ -341,7 +341,7 @@
                   {{ version_name }}
                 <span class="badge bg-primary">Android 版本号</span>
                 {{ version_code }}
-                </div>    
+                </div>
               </div>
 
             </div>
@@ -356,7 +356,7 @@
                 <strong><i class="fab fa-google-play"></i> PLAYSTORE 信息</strong>
                 </p>
                     <span class="badge bg-info">名称</span>
-                      {{ playstore_details.title }} <br/>                                     
+                      {{ playstore_details.title }} <br/>
                     <span class="badge bg-info">分数</span>
                       {{ playstore_details.score}}
                     <span class="badge bg-info">下载</span>
@@ -371,17 +371,17 @@
                         <a target="_blank" href="{{ playstore_details.url }}" rel="noopener noreferrer"> {{ package_name }} </a>
                     <br/>
                     <span class="badge bg-info">开发商信息</span>
-                        {{playstore_details.developer}},  
-                        {{playstore_details.developerId}}, 
+                        {{playstore_details.developer}},
+                        {{playstore_details.developerId}},
                         {{playstore_details.developerAddress}},
-                        {{playstore_details.developerWebsite}}, 
-                        {{playstore_details.developerEmail}}, 
+                        {{playstore_details.developerWebsite}},
+                        {{playstore_details.developerEmail}},
                   <br/>
                   <span class="badge bg-info">发行时间</span>
                       {{ playstore_details.released }}
                   <span class="badge bg-info">隐私策略</span>
                   <a target="_blank" href="{{ playstore_details.privacyPolicy }}" rel="noopener noreferrer">隐私链接</a>
-                  <br/>                                     
+                  <br/>
                       <span class="badge bg-info">描述</span>
                       <pre id="pre-wrap">{{ playstore_details.description }}</pre>
             </div>
@@ -397,7 +397,7 @@
    <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
-        
+
           <div class="card">
             <div class="card-body">
               <h5 class="card-title"></h5>
@@ -526,7 +526,7 @@
 
         </div>
       </div>
-    </div>  
+    </div>
   </section>
   <!-- =========================end information==================================== -->
 
@@ -618,9 +618,9 @@
                           {% endfor %}
                       </tbody>
                   </table>
-                                
+
            </div>
-              
+
           </div>
         </div><!-- /.card -->
         </div>
@@ -666,8 +666,8 @@
                         {% endfor %}
                       </div>
                     </td>
-                  </tr>    
-                    {% endfor %} 
+                  </tr>
+                    {% endfor %}
                   </tbody>
                   </table>
                   </div>
@@ -712,37 +712,37 @@
                                    {% if intent_details|key:"hosts" %}
                                       <strong>主机:</strong> {% for host in intent_details|key:"hosts" %}
                                         {{host}},
-                                      {% endfor %} 
+                                      {% endfor %}
                                       <br/>
                                    {% endif %}
                                    {% if intent_details|key:"ports" %}
                                       <strong>端口:</strong> {% for port in intent_details|key:"ports" %}
                                         {{port}},
-                                      {% endfor %} 
+                                      {% endfor %}
                                       <br/>
                                    {% endif %}
                                    {% if intent_details|key:"mime_types" %}
                                       <strong>Mime 类型:</strong> {% for mime in intent_details|key:"mime_types" %}
                                         {{mime}},
-                                      {% endfor %} 
+                                      {% endfor %}
                                       <br/>
                                    {% endif %}
                                    {% if intent_details|key:"paths" %}
                                       <strong>路径:</strong> {% for path in intent_details|key:"paths" %}
                                         {{path}},
-                                      {% endfor %} 
+                                      {% endfor %}
                                       <br/>
                                    {% endif %}
                                    {% if intent_details|key:"path_prefixs" %}
                                       <strong>路径前缀:</strong> {% for prefix in intent_details|key:"path_prefixs" %}
                                         {{prefix}},
-                                      {% endfor %} 
+                                      {% endfor %}
                                       <br/>
                                    {% endif %}
                                    {% if intent_details|key:"path_patterns" %}
                                       <strong>路径模式:</strong> {% for pattern in intent_details|key:"path_patterns" %}
                                         {{pattern}},
-                                      {% endfor %} 
+                                      {% endfor %}
                                       <br/>
                                    {% endif %}
                               {% endfor %}
@@ -778,21 +778,21 @@
                   <h5 class="description-header">{{ network_security.network_summary.high }}</h5>
                   </div>
                   </div>
-                  
+
                   <div class="col-sm-3 col-6">
                   <div class="description-block border-right">
                   <span class="text-warning"></i> WARNING</span>
                   <h5 class="description-header">{{ network_security.network_summary.warning }}</h5>
                   </div>
-                  
+
                   </div>
-                  
+
                   <div class="col-sm-3 col-6">
                   <div class="description-block border-right">
                   <span class="text-info">INFO</span>
                   <h5 class="description-header">{{ network_security.network_summary.info }}</h5>
                   </div>
-                  
+
                   </div>
 
                   <div class="col-sm-3 col-6">
@@ -800,10 +800,10 @@
                     <span class="text-success">SECURE</span>
                     <h5 class="description-header">{{ network_security.network_summary.secure }}</h5>
                     </div>
-                    
+
                     </div>
-                    
-                  
+
+
                   </div>
                   {% endif %}
                 <table id="table_network" class="table table-bordered table-hover table-striped">
@@ -839,14 +839,14 @@
                         <td>
                         {{item.description }}
                         </td>
-   
+
                        </tr>
                      {% endfor %}
                      {% endif %}
                     </tbody>
                   </table>
-                 
-                    
+
+
                   </div>
           </div>
         </div><!-- /.card -->
@@ -875,21 +875,21 @@
                   <h5 class="description-header">{{ manifest_analysis.manifest_summary.high }}</h5>
                   </div>
                   </div>
-                  
+
                   <div class="col-sm-3 col-6">
                   <div class="description-block border-right">
                   <span class="text-warning"></i> WARNING</span>
                   <h5 class="description-header">{{ manifest_analysis.manifest_summary.warning }}</h5>
                   </div>
-                  
+
                   </div>
-                  
+
                   <div class="col-sm-3 col-6">
                   <div class="description-block border-right">
                   <span class="text-info">INFO</span>
                   <h5 class="description-header">{{ manifest_analysis.manifest_summary.info }}</h5>
                   </div>
-                  
+
                   </div>
 
                   <div class="col-sm-3 col-6">
@@ -897,10 +897,10 @@
                     <span class="text-disabled">SUPPRESSED</span>
                     <h5 class="description-header">{{ manifest_analysis.manifest_summary.suppressed }}</h5>
                     </div>
-                    
+
                     </div>
-                    
-                  
+
+
                   </div>
                   {% endif %}
                 <table id="table_manifest" class="table table-bordered table-hover table-striped">
@@ -930,7 +930,7 @@
                           {% elif item|key:"severity" == "warning" %}
                             <span class="badge bg-warning">warning</span>
                           {% endif %}
-                         
+
                         </td>
                         <td>
                         {{item|key:"description"}}
@@ -940,7 +940,7 @@
                             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <i class="fa fa-eye-slash"></i>
                             </a>
-      
+
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                               <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{ item|key:"title" | android_component}}{{item|key:'rule' | escapejs }}', false, $(this.closest('tr')), true)">抑制 <b>{{package_name}}</b> 中的规则 <b>{{ item|key:"title" | android_component}}{{ item|key:'rule' }}</b></a>
                             </div>
@@ -951,7 +951,7 @@
                      {% endif %}
                     </tbody>
                   </table>
-                 
+
 
                   </div>
           </div>
@@ -981,29 +981,29 @@
               <h5 class="description-header">{{ code_analysis.summary.high }}</h5>
               </div>
               </div>
-              
+
               <div class="col-sm-2 col-6">
               <div class="description-block border-right">
               <span class="text-warning"></i> WARNING</span>
               <h5 class="description-header">{{ code_analysis.summary.warning }}</h5>
               </div>
-              
+
               </div>
-              
+
               <div class="col-sm-2 col-6">
               <div class="description-block border-right">
               <span class="text-info">INFO</span>
               <h5 class="description-header">{{ code_analysis.summary.info }}</h5>
               </div>
-              
+
               </div>
-              
+
               <div class="col-sm-2 col-6">
                 <div class="description-block border-right">
                 <span class="text-success">SECURE</span>
                 <h5 class="description-header">{{ code_analysis.summary.secure }}</h5>
                 </div>
-                
+
                 </div>
 
               <div class="col-sm-2 col-6">
@@ -1011,10 +1011,10 @@
                 <span class="text-disabled">SUPPRESSED</span>
                 <h5 class="description-header">{{ code_analysis.summary.suppressed }}</h5>
                 </div>
-                
+
                 </div>
-                
-              
+
+
               </div>
               {% endif %}
                 <table id="table_code" class="table table-bordered table-hover table-striped">
@@ -1099,7 +1099,7 @@
                       <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-eye-slash"></i>
                       </a>
-                    
+
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{rule | escapejs }}', false, $(this.closest('tr')))">删除 <b>{{package_name}}</b> 中的规则 <b>{{ rule }}</b> </a>
                         <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{rule | escapejs }}', true, $(this.closest('tr')))">仅在这些文件中删除 <b>{{package_name}}</b> 中的规则 <b>{{ rule }}</b> </a>
@@ -1107,12 +1107,12 @@
                     </div>
 
                   </td>
-                </tr>    
-              {% endfor %} 
+                </tr>
+              {% endfor %}
               {% endif %}
               </tbody>
             </table>
-            
+
 
             </div>
           </div>
@@ -1160,8 +1160,8 @@
                      <td>
                       {{ details.choice }}
                      </td>
-                  </tr>    
-                {% endfor %} 
+                  </tr>
+                {% endfor %}
               </tbody>
             </table>
             </div>
@@ -1202,10 +1202,10 @@
                      <td>
                      {% for cert_f in item|key:"files" %}
                       {{ cert_f }}<br />
-                     {% endfor %} 
+                     {% endfor %}
                     </td>
-                  </tr>    
-                {% endfor %} 
+                  </tr>
+                {% endfor %}
               </tbody>
             </table>
             </div>
@@ -1293,7 +1293,7 @@
               <div class="table-responsive">
                 <div id="chartdiv"></div>
             </div>
-            
+
             <div class="table-responsive">
               {% if domains %}
               <p></br>此 APP 可以与以下 OFAC 批准的国家/地区列表进行通信。 </p>
@@ -1341,7 +1341,7 @@
              <strong><i class="fab fa-searchengin"></i> 域恶意软件检测</strong>
              </p>
               <div class="table-responsive">
-              {% if domains %} 
+              {% if domains %}
              <table id="table_malware" class="table table-bordered table-hover table-striped">
                   <thead>
                   <tr>
@@ -1352,7 +1352,7 @@
                  </thead>
                  <tbody>
                  {% for domain, details in domains.items %}
-                  <tr><td>{{domain}}</td><td> 
+                  <tr><td>{{domain}}</td><td>
 
                     {% if details|key:"bad" == "yes" %}
                     <span class="badge bg-danger">malware</span><br/>
@@ -1403,7 +1403,7 @@
              <strong><i class="fas fa-globe"></i> URLS</strong>
              </p>
               <div class="table-responsive">
-              {% if urls %} 
+              {% if urls %}
              <table id="table_urls" class="table table-bordered table-hover table-striped">
                   <thead>
                   <tr>
@@ -1424,7 +1424,7 @@
                           <a href="{% url "view_source" %}?file={{urldict|key:"path"}}&amp;md5={{ md5}}&amp;type={{app_type}}">{{urldict|key:"path"}}</a>
                        </td>
                     </tr>
-                  {% endfor %} 
+                  {% endfor %}
                 </tbody>
             </table>
             {% endif %}
@@ -1448,7 +1448,7 @@
              <strong><i class="fas fa-database"></i> FIREBASE 数据库</strong>
              </p>
               <div class="table-responsive">
-               {% if firebase_urls %} 
+               {% if firebase_urls %}
              <table id="table_firebase" class="table table-bordered table-hover table-striped">
                   <thead>
                   <tr>
@@ -1456,7 +1456,7 @@
                      <th>详情</th>
                   </tr>
                  </thead>
-               
+
                  <tbody>
                   {% for item in firebase_urls %}
                     <tr>
@@ -1471,7 +1471,7 @@
                          {% endif %}
                        </td>
                     </tr>
-                  {% endfor %} 
+                  {% endfor %}
                </tbody>
             </table>
              {% endif %}
@@ -1495,7 +1495,7 @@
              <strong><i class="fas fa-envelope"></i> 电子邮件</strong>
              </p>
               <div class="table-responsive">
-                {% if emails %} 
+                {% if emails %}
              <table id="table_emails" class="table table-bordered table-hover table-striped">
                   <thead>
                   <tr>
@@ -1515,7 +1515,7 @@
                           <a href="{% url "view_source" %}?file={{email_dict|key:"path"}}&amp;md5={{ md5}}&amp;type={{app_type}}">{{email_dict|key:"path"}}</a>
                        </td>
                     </tr>
-                  {% endfor %} 
+                  {% endfor %}
                   </tbody>
             </table>
               {% endif %}
@@ -1678,7 +1678,7 @@
         </div>
         <!-- end row -->
         </div>
-    
+
 </section>
  <!-- ===========================end receivers ================================== -->
 <a id="providers" class="anchor"></a>
@@ -1817,61 +1817,61 @@
 <script>
   // Themes begin
   am4core.useTheme(am4themes_animated);
-  
+
   // Create map instance
   var chart = am4core.create("chartdiv", am4maps.MapChart);
-  
+
   // Set map definition
   chart.geodata = am4geodata_worldIndiaLow;
-  
+
   // Set projection
   chart.projection = new am4maps.projections.Miller();
-  
+
   // Create map polygon series
   var polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
-  
+
   // Exclude Antartica
   polygonSeries.exclude = ["AQ"];
-  
+
   // Make map load polygon (like country names) data from GeoJSON
   polygonSeries.useGeodata = true;
-  
+
   // Configure series
   var polygonTemplate = polygonSeries.mapPolygons.template;
   polygonTemplate.tooltipText = "{name}";
   polygonTemplate.polygon.fillOpacity = 0.6;
-  
+
   // Create hover state and set alternative fill color
   var hs = polygonTemplate.states.create("hover");
   hs.properties.fill = chart.colors.getIndex(0);
-  
+
   // Add image series
   var imageSeries = chart.series.push(new am4maps.MapImageSeries());
   imageSeries.mapImages.template.propertyFields.longitude = "longitude";
   imageSeries.mapImages.template.propertyFields.latitude = "latitude";
   imageSeries.mapImages.template.tooltipText = "{title}";
   imageSeries.mapImages.template.propertyFields.url = "url";
-  
+
   var circle = imageSeries.mapImages.template.createChild(am4core.Circle);
   circle.radius = 3;
   circle.propertyFields.fill = "color";
-  
+
   var circle2 = imageSeries.mapImages.template.createChild(am4core.Circle);
   circle2.radius = 3;
   circle2.propertyFields.fill = "color";
-  
-  
+
+
   circle2.events.on("inited", function(event){
     animateBullet(event.target);
   })
-  
+
   function animateBullet(circle) {
       var animation = circle.animate([{ property: "scale", from: 1, to: 5 }, { property: "opacity", from: 1, to: 0 }], 1000, am4core.ease.circleOut);
       animation.events.on("animationended", function(event){
         animateBullet(event.target.object);
       })
   }
-  
+
   var colorSet = new am4core.ColorSet();
   imageSeries.data = [
   {% if domains %}
@@ -1888,5 +1888,5 @@
   {% endif %}
   ];
   </script>
-  
+
 {% endblock %}

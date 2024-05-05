@@ -11,13 +11,12 @@ logger = logging.getLogger(__name__)
 VERSION = '3.9.8'
 BANNER = """
    ___     ____ __  __  ____  ____     _____ ___
-  /   \  / ____|  \/  |/ ___||  __|   |___ // _ \
+  /   \  / ____|  \/  |/ ___||  __|   |___ // _ \\
  / /_\ \| |   _| |\/| |\___ \| |_\ \ / /|_ \ (_) |
 |  ___  | |__| | |  | | ___) |  _|\ V /___) \__, |
 |_|   |_|\_____|_|  |_|/____/|_|   \_/|____(.)/_/
 """  # noqa: W291
 # ASCII Font: Standard
-
 
 def first_run(secret_file, base_dir, mobsf_home):
     # Based on https://gist.github.com/ndarville/3452907#file-secret-key-gen-py
