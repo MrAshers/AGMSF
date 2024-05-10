@@ -1172,7 +1172,7 @@
                             </a>
 
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                              <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{ item|key:"title" | android_component}}{{item|key:'rule' | escapejs }}', false, $(this.closest('tr')), true)">抑制 <b>{{package_name}}</b> 中的规则 <b>{{ item|key:"title" | android_component}}{{ item|key:'rule' }}</b> </a>
+                              <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{ item|key:"title" | android_component}}{{item|key:'rule' | escapejs }}', false, $(this.closest('tr')), true)">忽略 <b>{{package_name}}</b> 中的规则 <b>{{ item|key:"title" | android_component}}{{ item|key:'rule' }}</b> </a>
                             </div>
                           </div>
                         </td>
@@ -1330,8 +1330,8 @@
                       </a>
 
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{rule | escapejs }}', false, $(this.closest('tr')))">抑制 <b>{{package_name}}</b> 中的规则 <b>{{ rule }}</b> </a>
-                        <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{rule | escapejs }}', true, $(this.closest('tr')))">仅在这些文件中抑制 <b>{{package_name}}</b> 中的规则 <b>{{ rule }}</b> </a>
+                        <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{rule | escapejs }}', false, $(this.closest('tr')))">忽略 <b>{{package_name}}</b> 中的规则 <b>{{ rule }}</b> </a>
+                        <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{rule | escapejs }}', true, $(this.closest('tr')))">仅在这些文件中忽略 <b>{{package_name}}</b> 中的规则 <b>{{ rule }}</b> </a>
                       </div>
                     </div>
 
@@ -2304,7 +2304,7 @@
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">抑制规则</h4>
+        <h4 class="modal-title">忽略规则</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
@@ -2313,7 +2313,7 @@
         <table id="sup_table" class="table table-bordered table-hover table-striped">
           <thead>
             <tr>
-                <th>抑制类型</th>
+                <th>忽略类型</th>
                 <th>根据规则 ID</th>
                 <th>根据文件</th>
             </tr>

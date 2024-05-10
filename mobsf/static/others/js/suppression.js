@@ -47,12 +47,12 @@
   function suppress(rule, files, tr, manifest=false){
     if (files){
       endpoint = suppress_by_files_url
-      title = '<strong>从文件中隐藏警报</strong>'
-      html = `This will suppress any findings of the rule <b>${escapeHtml(rule)}</b> triggering from these files for <b>${escapeHtml(pkg)}</b> from now on.`
+      title = '<strong>从文件中忽略</strong>'
+      html = `从现在开始，这将禁止这些文件触发 <b>${escapeHtml(pkg)}</b> 规则 <b>${escapeHtml(rule)}</b> 的任何结果。`
     } else {
       endpoint = suppress_by_rule_url
-      title = '<strong>隐藏规则</strong>'
-      html = `This will suppress the rule <b>${escapeHtml(rule)}</b> from tiggering for <b>${escapeHtml(pkg)}</b> from now on.`
+      title = '<strong>忽略规则</strong>'
+      html = `从现在开始，这将禁止规则 <b>${escapeHtml(rule)}</b> 触发 <b>${escapeHtml(pkg)}</b> 。`
     }
     if (manifest){
       table = '#table_manifest'
@@ -89,9 +89,9 @@ function remove_suppression(ctx){
   type = $(ctx).data('type');
   
   Swal.fire({
-    title: '删除抑制规则?',
+    title: '取消忽略规则?',
     type: 'warning',
-    text: '你想删除抑制规则吗?',
+    text: '你想取消忽略规则吗?',
     showCancelButton: true,
     cancelButtonText: '取消',
     confirmButtonText: '确定',
