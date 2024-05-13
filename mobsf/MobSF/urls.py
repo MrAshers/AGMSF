@@ -105,6 +105,11 @@ if settings.API_ONLY == '0':
 
         # Test
         re_path(r'^tests/$', tests.start_test),
+
+        # Log
+        re_path(r'^get_log_content/$',
+                shared_func.get_log_content,
+                name='get_log_content'),
     ])
 
 utils.print_version()

@@ -4,6 +4,7 @@ Shared Functions.
 
 Module providing the shared functions for iOS and Android
 """
+import collections
 import io
 import hashlib
 import logging
@@ -21,7 +22,7 @@ import requests
 import arpy
 
 from django.utils.html import escape
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 
 from mobsf.MobSF import settings
 from mobsf.MobSF.utils import (
@@ -44,7 +45,6 @@ from mobsf.StaticAnalyzer.views.comparer import (
 from mobsf.StaticAnalyzer.views.common.entropy import (
     get_entropies,
 )
-
 
 logger = logging.getLogger(__name__)
 
@@ -425,3 +425,10 @@ def scan_library(request, checksum):
         msg = 'Failed to perform Static Analysis of library'
         logger.exception(msg)
         return print_n_send_error_response(request, msg)
+
+
+def get_log_content(request):
+    with open('C:/Users/18777/.MobSF/debug.log', 'r') as log_file:
+        last_lines = collections.deque(log_file, 5)
+    content = ''.join('<p>{}</p>'.format(line) for line in last_lines)
+    return HttpResponse(content)

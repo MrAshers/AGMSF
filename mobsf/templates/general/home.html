@@ -71,12 +71,12 @@
                      <small><i>把 APP 扔进来吧！</i></small>
                      <h5 id="status"></h5>
                      <progress id="progressBar" value="0" max="100" style="width:300px;visibility:hidden;" ></progress>
+                      <div class="inner" id="logContent">
+                       <!-- Log content will be inserted here -->
+                      </div>
                   </form>
                </div>
                <div class="mastfoot">
-                
-                  <input type="download" id="package" class="form-control" placeholder="下载并按软件包名称扫描"/>
-
 
                   <div class="inner">
                      <h6> <a href="{% url 'recent' %}">分析记录</a>  |  <a href="{% url 'about' %}">关于</a></h6>
@@ -334,6 +334,15 @@
                     }
                 });
             });
+
+            setInterval(function (){
+                fetch('/get_log_content/')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('logContent').innerHTML = data;
+                });
+            }, 1500); //每 1.5秒更新一次
+
         </script>
    </body>
 </html>
