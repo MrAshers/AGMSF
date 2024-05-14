@@ -807,7 +807,7 @@
          </tbody>
      </table>
 
-      <h2><i class="fab fa-searchengin"></i> 域恶意软件检测</h2>
+      <h2><i class="fab fa-searchengin"></i> 恶意域检测</h2>
          <table  class="basic">
                   <thead>
                   <tr>
@@ -965,26 +965,6 @@
             </tbody>
         </table>
          {% endif %}
-    
-        {% if secrets %}
-        <h2><i class="fas fa-key"></i> 可能的硬编码加密密钥</h2>
-            <table class="basic">
-                    <thead>
-                    <tr>
-                      <th>可能的密钥</th>
-                    </tr>
-                  </thead>
-                    <tbody>
-                    {% for sec in secrets %}
-                      <tr>
-                        <td style="word-break:break-all;">
-                        {{ sec }}
-                          </td>
-                      </tr>
-                    {% endfor %} 
-                      </tbody>
-                      </table>
-        {% endif %}
 
         <!--Only for so-->
         {% if app_type in 'so' %}
