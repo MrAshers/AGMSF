@@ -527,11 +527,10 @@
             <div class="card">
               <div class="card-body">
                 <p>
-                <strong><i class="fas fa-cog"></i> 检测选项</strong>
+                <strong><i class="fas fa-cog"></i> 分析选项</strong>
                 </p>
                 <p align="center">
-                  <a href="{% url 'static_analyzer' checksum=md5 %}?rescan=1" class="btn btn-info" role="button"><i class="fa fa-sync"></i> 重新检测</a>
-                  <a id="supbtn" onclick="list_suppressions()" role="button" class="btn btn-primary" data-target="#sup_list" data-toggle="modal" href="#"><i class="fa fa-list"></i> 管理屏蔽列表</a>
+                  <a href="{% url 'static_analyzer' checksum=md5 %}?rescan=1" class="btn btn-info" role="button"><i class="fa fa-sync"></i> 重新分析</a>
                   <a target="_blank" href="{% url "manifest_view" checksum=md5 %}?type={{ app_type }}" role="button" class="btn btn-primary"><i class="fa fa-eye"></i>  查看 AndroidManifest.xml</a>
                   <a href="{% url "tree_view" %}?md5={{ md5 }}&amp;type=java" class="btn btn-info" role="button"><i class="fa fa-code"></i> 查看资源</a>
                 </p>
@@ -898,7 +897,6 @@
                           <th>信息</th>
                           <th>严重程度</th>
                           <th>描述</th>
-                          <th>选项</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -923,17 +921,17 @@
                         <td>
                         {{item|key:"description"}}
                         </td>
-                        <td>
-                          <div class="dropdown show">
-                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="fa fa-eye-slash"></i>
-                            </a>
+<!--                        <td>-->
+<!--                          <div class="dropdown show">-->
+<!--                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                              <i class="fa fa-eye-slash"></i>-->
+<!--                            </a>-->
 
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                              <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{ item|key:"title" | android_component}}{{item|key:'rule' | escapejs }}', false, $(this.closest('tr')), true)">忽略 <b>{{package_name}}</b> 中的规则 <b>{{ item|key:"title" | android_component}}{{ item|key:'rule' }}</b></a>
-                            </div>
-                          </div>
-                        </td>
+<!--                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">-->
+<!--                              <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{ item|key:"title" | android_component}}{{item|key:'rule' | escapejs }}', false, $(this.closest('tr')), true)">忽略 <b>{{package_name}}</b> 中的规则 <b>{{ item|key:"title" | android_component}}{{ item|key:'rule' }}</b></a>-->
+<!--                            </div>-->
+<!--                          </div>-->
+<!--                        </td>-->
                        </tr>
                      {% endfor %}
                      {% endif %}
@@ -1013,7 +1011,6 @@
                       <th>严重程度</th>
                       <th>标准</th>
                       <th>文件</th>
-                      <th>选项</th>
                   </tr>
                     </thead>
                     <tbody>
@@ -1083,15 +1080,15 @@
                   </td>
                   <td>
 
-                    <div class="dropdown show">
-                      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-eye-slash"></i>
-                      </a>
+<!--                    <div class="dropdown show">-->
+<!--                      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                        <i class="fa fa-eye-slash"></i>-->
+<!--                      </a>-->
 
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{rule | escapejs }}', false, $(this.closest('tr')))">删除 <b>{{package_name}}</b> 中的规则 <b>{{ rule }}</b> </a>
-                        <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{rule | escapejs }}', true, $(this.closest('tr')))">仅在这些文件中删除 <b>{{package_name}}</b> 中的规则 <b>{{ rule }}</b> </a>
-                      </div>
+<!--                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">-->
+<!--                        <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{rule | escapejs }}', false, $(this.closest('tr')))">删除 <b>{{package_name}}</b> 中的规则 <b>{{ rule }}</b> </a>-->
+<!--                        <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{rule | escapejs }}', true, $(this.closest('tr')))">仅在这些文件中删除 <b>{{package_name}}</b> 中的规则 <b>{{ rule }}</b> </a>-->
+<!--                      </div>-->
                     </div>
 
                   </td>

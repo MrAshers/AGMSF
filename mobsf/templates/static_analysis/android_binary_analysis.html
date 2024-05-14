@@ -628,9 +628,6 @@
                   {% if app_type in 'so' %}
                   <a href="{% url 'generate_downloads' %}?hash={{ md5 }}&amp;file_type={{ app_type }}" class="btn btn-warning"> <i class="fa fa-download"></i> 下载 {{ app_type | upper}}</a>
                   {% endif %}
-                  {% if app_type not in 'so' %}
-                  <a id="supbtn" onclick="list_suppressions()" role="button" class="btn btn-primary" data-target="#sup_list" data-toggle="modal" href="#"><i class="fa fa-list"></i> 管理屏蔽列表</a>
-                  {% endif %}
                 </p>
               </div>
             </div><!-- /.card -->
@@ -1128,7 +1125,6 @@
                           <th>信息</th>
                           <th>严重程度</th>
                           <th>描述</th>
-                          <th>选项</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1153,17 +1149,17 @@
                         <td>
                         {{item|key:"description"}}
                         </td>
-                        <td>
-                          <div class="dropdown show">
-                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <i class="fa fa-eye-slash"></i>
-                            </a>
+<!--                        <td>-->
+<!--                          <div class="dropdown show">-->
+<!--                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                              <i class="fa fa-eye-slash"></i>-->
+<!--                            </a>-->
 
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                              <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{ item|key:"title" | android_component}}{{item|key:'rule' | escapejs }}', false, $(this.closest('tr')), true)">忽略 <b>{{package_name}}</b> 中的规则 <b>{{ item|key:"title" | android_component}}{{ item|key:'rule' }}</b> </a>
-                            </div>
-                          </div>
-                        </td>
+<!--                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">-->
+<!--                              <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{ item|key:"title" | android_component}}{{item|key:'rule' | escapejs }}', false, $(this.closest('tr')), true)">忽略 <b>{{package_name}}</b> 中的规则 <b>{{ item|key:"title" | android_component}}{{ item|key:'rule' }}</b> </a>-->
+<!--                            </div>-->
+<!--                          </div>-->
+<!--                        </td>-->
                        </tr>
                      {% endfor %}
                      {% endif %}
@@ -1243,7 +1239,6 @@
                       <th>严重程度</th>
                       <th>标准</th>
                       <th>文件</th>
-                      <th>选项</th>
                   </tr>
                     </thead>
                       <tbody>
@@ -1310,20 +1305,20 @@
                       </div>
                     {% endif %}
                   </td>
-                  <td>
+<!--                  <td>-->
 
-                    <div class="dropdown show">
-                      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-eye-slash"></i>
-                      </a>
+<!--                    <div class="dropdown show">-->
+<!--                      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                        <i class="fa fa-eye-slash"></i>-->
+<!--                      </a>-->
 
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{rule | escapejs }}', false, $(this.closest('tr')))">忽略 <b>{{package_name}}</b> 中的规则 <b>{{ rule }}</b> </a>
-                        <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{rule | escapejs }}', true, $(this.closest('tr')))">仅在这些文件中忽略 <b>{{package_name}}</b> 中的规则 <b>{{ rule }}</b> </a>
-                      </div>
-                    </div>
+<!--                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">-->
+<!--                        <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{rule | escapejs }}', false, $(this.closest('tr')))">忽略 <b>{{package_name}}</b> 中的规则 <b>{{ rule }}</b> </a>-->
+<!--                        <a style="cursor:pointer;" class="dropdown-item" onclick="suppress('{{rule | escapejs }}', true, $(this.closest('tr')))">仅在这些文件中忽略 <b>{{package_name}}</b> 中的规则 <b>{{ rule }}</b> </a>-->
+<!--                      </div>-->
+<!--                    </div>-->
 
-                  </td>
+<!--                  </td>-->
                 </tr>
               {% endfor %}
               {% endif %}

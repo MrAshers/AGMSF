@@ -2,7 +2,7 @@
 """
 Shared Functions.
 
-Module providing the shared functions for iOS and Android
+Module providing the shared functions for Android
 """
 import collections
 import io
