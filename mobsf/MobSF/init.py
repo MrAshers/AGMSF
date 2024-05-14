@@ -16,6 +16,8 @@ BANNER = """
 |  ___  | |__| | |  | | ___) |  _|\ V /___) \__, |
 |_|   |_|\_____|_|  |_|/____/|_|   \_/|____(.)/_/
 """  # noqa: W291
+
+
 # ASCII Font: Standard
 
 def first_run(secret_file, base_dir, mobsf_home):
