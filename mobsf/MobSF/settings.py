@@ -325,7 +325,7 @@ else:
     # Disable CVSSV2 Score by default
     CVSS_SCORE_ENABLED = bool(os.getenv('MOBSF_CVSS_SCORE_ENABLED', ''))
     # NIAP Scan
-    NIAP_ENABLED = os.getenv('MOBSF_NIAP_ENABLED', '')
+    NIAP_ENABLED = os.getenv('MOBSF_NIAP_ENABLED', '1')
     # Permission to Code Mapping
     PERM_MAPPING_ENABLED = os.getenv('MOBSF_PERM_MAPPING_ENABLED', '1')
     # Dex 2 Smali Conversion
@@ -341,7 +341,7 @@ else:
 
     DOMAIN_MALWARE_SCAN = os.getenv('MOBSF_DOMAIN_MALWARE_SCAN', '1')
     APKID_ENABLED = os.getenv('MOBSF_APKID_ENABLED', '1')
-    QUARK_ENABLED = bool(os.getenv('MOBSF_QUARK_ENABLED', ''))
+    QUARK_ENABLED = bool(os.getenv('MOBSF_QUARK_ENABLED', '1'))
     # ==================================================
     # ======WINDOWS STATIC ANALYSIS SETTINGS ===========
     # Private key
