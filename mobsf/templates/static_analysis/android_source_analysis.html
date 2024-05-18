@@ -1735,37 +1735,37 @@
   });
 </script>
 <script>
-  // Themes begin
+
   am4core.useTheme(am4themes_animated);
 
-  // Create map instance
+  // 创建地图实例
   var chart = am4core.create("chartdiv", am4maps.MapChart);
 
-  // Set map definition
+  // 设置地图定义
   chart.geodata = am4geodata_worldIndiaLow;
 
-  // Set projection
+  // 设置投影
   chart.projection = new am4maps.projections.Miller();
 
-  // Create map polygon series
+  // 创建地图多边形
   var polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
 
-  // Exclude Antartica
+  // 排除南极洲
   polygonSeries.exclude = ["AQ"];
 
-  // Make map load polygon (like country names) data from GeoJSON
+  // 用GeoJSON使地图加载多边形(如国家名称)
   polygonSeries.useGeodata = true;
 
-  // Configure series
+  // 配置
   var polygonTemplate = polygonSeries.mapPolygons.template;
   polygonTemplate.tooltipText = "{name}";
   polygonTemplate.polygon.fillOpacity = 0.6;
 
-  // Create hover state and set alternative fill color
+  // 创建悬停状态并设置替代填充颜色
   var hs = polygonTemplate.states.create("hover");
   hs.properties.fill = chart.colors.getIndex(0);
 
-  // Add image series
+  // 添加图像系列
   var imageSeries = chart.series.push(new am4maps.MapImageSeries());
   imageSeries.mapImages.template.propertyFields.longitude = "longitude";
   imageSeries.mapImages.template.propertyFields.latitude = "latitude";
