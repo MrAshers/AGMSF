@@ -2,7 +2,7 @@
 
 ![](https://github.com/MrAshers/AGMSF/blob/master/mobsf/static/img/mobsf_Readme.png)
 
-👋`AndroMSF` 是 **南京审计大学** 2020 级计算机学院 **周梓豪** 做的毕业设计，是一个基于`Androguard` 的 `Android` 应用安全分析系统。`AndroMSF`  使用 `Django` 框架开发，使用 `sqlite` 进行存储。
+👋`AndroMSF` 是 **南京审计大学** 2020 级计算机学院 **周梓豪** 做的毕业设计，是一个基于`Androguard` 的 `Android` 应用安全分析系统。`AndroMSF`  使用 `Django` 框架开发，使用 `SQLite` 进行存储。
 
 Made ![Love](https://cloud.githubusercontent.com/assets/4301109/16754758/82e3a63c-4813-11e6-9430-6015d98aeaab.png) in China.
 
@@ -11,7 +11,7 @@ Made ![Love](https://cloud.githubusercontent.com/assets/4301109/16754758/82e3a63
 [![platform](https://img.shields.io/badge/platform-windows-green.svg)](https://github.com/MobSF/Mobile-Security-Framework-MobSF/)
 [![License](https://img.shields.io/:license-GPL--3.0--only-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 
-## 👀安装环境需要
+## 📚安装环境依赖
 
 - [Python 3.10+](https://www.python.org/)
 - [Git](https://git-scm.com/download/win)
@@ -32,4 +32,12 @@ setup.bat
 ```bash
 run.bat 127.0.0.1:8000
 ```
-在浏览器中打开 `http://localhost:8000/` 即可访问。
+在浏览器中打开 `http://localhost:8000/` 即可访问!
+
+## 📝使用说明
+
+- 选择自己想分析的 **Android APK** 文件拖入上传框或选择文件，上传成功即自动开始分析
+- 分析完成后即可查看分析结果，可导出为 **PDF** 文件
+- 结果对每个 APK 都有评分，评分越高越安全，评分依据 **CVSS评分系统** 判定
+
+## Static Analysis
