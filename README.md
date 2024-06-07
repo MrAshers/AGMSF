@@ -1,6 +1,6 @@
 # AGMSF
 
-![](https://github.com/MrAshers/AGMSF/blob/master/mobsf/static/img/mobsf_Readme.png)
+![](mobsf/static/img/mobsf_Readme.png)
 
 👋`AndroMSF` 是 **南京审计大学** 2020 级计算机学院 **周梓豪** 做的毕业设计，是一个基于`Androguard` 的 `Android` 应用安全分析系统。`AndroMSF`  使用 `Django` 框架开发，使用 `SQLite` 进行存储。
 
@@ -41,3 +41,19 @@ run.bat 127.0.0.1:8000
 - 结果对每个 APK 都有评分，评分越高越安全，评分依据 **CVSS评分系统** 判定
 
 ## Static Analysis
+### 首页
+
+![](mobsf/static/img/4examples/home.png)
+
+### 分析记录
+![](mobsf/static/img/4examples/recent.png)
+
+### 分析报告
+![](mobsf/static/img/4examples/report.png)
+
+### 导出 PDF 报告
+
+![](mobsf/static/img/4examples/pdf.png)
+
+### 分数卡
+![](mobsf/static/img/4examples/appsec.png)
