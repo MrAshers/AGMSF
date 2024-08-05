@@ -2,7 +2,9 @@
 
 ![](mobsf/static/img/mobsf_Readme.png)
 
-👋`AndroMSF` 是 **南京审计大学** 2020 级计算机学院 **周梓豪** 做的毕业设计，是一个基于`Androguard` 的 `Android` 应用安全分析系统。`AndroMSF`  使用 `Django` 框架开发，使用 `SQLite` 进行存储。
+👋`AndroMSF` 是 **南京审计大学** 2020 级计算机学院某某同学做的毕业设计，是一个基于`Androguard` 的 `Android` 应用安全分析系统。`AndroMSF`  使用 `Django` 框架开发，使用 `SQLite` 进行存储。
+
+借鉴国外大佬项目 [MobSF](https://github.com/MobSF/Mobile-Security-Framework-MobSF) 开发。本项目只有其 Android 静态分析部分，且为中文版本。
 
 Made ![Love](https://cloud.githubusercontent.com/assets/4301109/16754758/82e3a63c-4813-11e6-9430-6015d98aeaab.png) in China.
 
